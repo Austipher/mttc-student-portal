@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assessment Results Portal</title>
+    <title>Student Assessment Portal</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f2f5f9;
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #222;
         }
 
         header {
             background: #0b5ed7;
             color: white;
             text-align: center;
-            padding: 25px 10px;
+            padding: 25px 15px;
         }
 
         header h1 {
@@ -30,12 +34,16 @@
         }
 
         .container {
-            max-width: 700px;
-            margin: 30px auto;
+            max-width: 750px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        .card {
             background: white;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
         }
 
         h2 {
@@ -49,5 +57,32 @@
             font-weight: bold;
         }
 
-        input, select {
-            width: 
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 6px;
+            background: #0b5ed7;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #084298;
+        }
+
+        #results {
+            display: none;
+            margin
