@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTTC Student Assessment Portal</title>
+    <title>MTTC Student Results Portal</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background: #f1f5f9;
-            color: #222;
+            background: #f2f5f9;
+            margin: 0;
+            padding: 0;
         }
 
         header {
-            background: #0b5ed7;
+            background: #17365d;
             color: white;
             text-align: center;
             padding: 25px 15px;
@@ -30,69 +26,66 @@
         }
 
         header p {
-            margin: 8px 0 0;
+            margin-top: 8px;
         }
 
         .container {
-            max-width: 750px;
-            margin: 25px auto;
+            max-width: 700px;
+            margin: 30px auto;
             padding: 20px;
         }
 
-        .card {
+        .search-box {
             background: white;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-        }
-
-        h2 {
-            text-align: center;
-            color: #0b5ed7;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
         input {
             width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            border: 1px solid #bbb;
-            border-radius: 6px;
+            padding: 14px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
             font-size: 16px;
         }
 
         button {
             width: 100%;
-            padding: 13px;
-            margin-top: 22px;
-            border: none;
-            border-radius: 6px;
-            background: #0b5ed7;
+            padding: 14px;
+            background: #17365d;
             color: white;
-            font-size: 17px;
-            font-weight: bold;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
             cursor: pointer;
         }
 
         button:hover {
-            background: #084298;
+            background: #0f2745;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
         }
 
         #results {
             display: none;
+            background: white;
             margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
         .student-info {
-            background: #eef4ff;
-            padding: 15px;
-            border-radius: 8px;
             margin-bottom: 20px;
+            line-height: 1.8;
         }
 
         table {
@@ -102,25 +95,24 @@
 
         th, td {
             border: 1px solid #ccc;
-            padding: 11px;
+            padding: 12px;
             text-align: center;
         }
 
         th {
-            background: #0b5ed7;
+            background: #17365d;
             color: white;
         }
 
         .summary {
             margin-top: 20px;
-            padding: 15px;
-            background: #f3f3f3;
-            border-radius: 8px;
-            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.8;
         }
 
         footer {
             text-align: center;
+            margin-top: 30px;
             padding: 20px;
             color: #666;
         }
@@ -130,98 +122,55 @@
 <body>
 
 <header>
-    <h1>MTTC Student Assessment Portal</h1>
-    <p>Student Assessment Results</p>
+    <h1>MTTC Student Results Portal</h1>
+    <p>Check your assessment results</p>
 </header>
 
 <div class="container">
 
-    <div class="card">
+    <div class="search-box">
+        <h2>Search Student Results</h2>
 
-        <h2>Enter Student Results</h2>
+        <label>Enter Student ID or Name:</label>
 
-        <label for="studentName">Student Name</label>
-        <input type="text" id="studentName" placeholder="Enter student name">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Example: MTTC001 or John Banda"
+        >
 
-        <label for="studentClass">Class</label>
-        <input type="text" id="studentClass" placeholder="Enter class">
+        <button onclick="searchResults()">Search Results</button>
 
-        <label for="english">English</label>
-        <input type="number" id="english" min="0" max="100" placeholder="Enter marks">
+        <div id="message"></div>
+    </div>
 
-        <label for="mathematics">Mathematics</label>
-        <input type="number" id="mathematics" min="0" max="100" placeholder="Enter marks">
 
-        <label for="science">Science</label>
-        <input type="number" id="science" min="0" max="100" placeholder="Enter marks">
+    <div id="results">
 
-        <label for="socialStudies">Social Studies</label>
-        <input type="number" id="socialStudies" min="0" max="100" placeholder="Enter marks">
+        <h2>Student Results</h2>
 
-        <label for="agriculture">Agriculture</label>
-        <input type="number" id="agriculture" min="0" max="100" placeholder="Enter marks">
+        <div class="student-info">
+            <strong>Name:</strong> <span id="studentName"></span><br>
+            <strong>Student ID:</strong> <span id="studentID"></span><br>
+            <strong>Class:</strong> <span id="studentClass"></span>
+        </div>
 
-        <button onclick="showResults()">Calculate Results</button>
-
-        <div id="results">
-
-            <h2>Student Results</h2>
-
-            <div class="student-info">
-                <strong>Name:</strong>
-                <span id="resultName"></span>
-                <br><br>
-                <strong>Class:</strong>
-                <span id="resultClass"></span>
-            </div>
-
-            <table>
+        <table>
+            <thead>
                 <tr>
                     <th>Subject</th>
                     <th>Marks</th>
                     <th>Grade</th>
                 </tr>
+            </thead>
 
-                <tr>
-                    <td>English</td>
-                    <td id="englishResult"></td>
-                    <td id="englishGrade"></td>
-                </tr>
+            <tbody id="resultsTable">
+            </tbody>
+        </table>
 
-                <tr>
-                    <td>Mathematics</td>
-                    <td id="mathResult"></td>
-                    <td id="mathGrade"></td>
-                </tr>
-
-                <tr>
-                    <td>Science</td>
-                    <td id="scienceResult"></td>
-                    <td id="scienceGrade"></td>
-                </tr>
-
-                <tr>
-                    <td>Social Studies</td>
-                    <td id="socialResult"></td>
-                    <td id="socialGrade"></td>
-                </tr>
-
-                <tr>
-                    <td>Agriculture</td>
-                    <td id="agricultureResult"></td>
-                    <td id="agricultureGrade"></td>
-                </tr>
-            </table>
-
-            <div class="summary">
-                <strong>Total Marks:</strong>
-                <span id="total"></span> / 500
-                <br><br>
-
-                <strong>Average:</strong>
-                <span id="average"></span>%
-            </div>
-
+        <div class="summary">
+            Total Marks: <span id="totalMarks"></span><br>
+            Average: <span id="averageMarks"></span>%
         </div>
 
     </div>
@@ -229,77 +178,194 @@
 </div>
 
 <footer>
-    MTTC Student Assessment Portal
+    MTTC Student Portal
 </footer>
+
 
 <script>
 
-function getGrade(mark) {
+    /*
+    ==================================================
+    STUDENT RESULTS DATABASE
+    ==================================================
 
-    if (mark >= 80) {
-        return "A";
-    } else if (mark >= 70) {
-        return "B";
-    } else if (mark >= 60) {
-        return "C";
-    } else if (mark >= 50) {
-        return "D";
-    } else if (mark >= 40) {
-        return "E";
-    } else {
+    ADD YOUR STUDENTS HERE.
+
+    Change the sample names, IDs, subjects and marks
+    to your own student information.
+    */
+
+    const students = [
+
+        {
+            id: "MTTC001",
+            name: "John Banda",
+            class: "Class D",
+
+            results: [
+                { subject: "English", marks: 75 },
+                { subject: "Mathematics", marks: 82 },
+                { subject: "Science", marks: 68 },
+                { subject: "Social Studies", marks: 74 },
+                { subject: "Agriculture", marks: 80 }
+            ]
+        },
+
+        {
+            id: "MTTC002",
+            name: "Mary Phiri",
+            class: "Class D",
+
+            results: [
+                { subject: "English", marks: 65 },
+                { subject: "Mathematics", marks: 72 },
+                { subject: "Science", marks: 78 },
+                { subject: "Social Studies", marks: 70 },
+                { subject: "Agriculture", marks: 66 }
+            ]
+        }
+
+    ];
+
+
+    /*
+    ============================================
+    AUTOMATIC GRADE
+    ============================================
+    */
+
+    function getGrade(marks) {
+
+        if (marks >= 80) {
+            return "A";
+        }
+
+        if (marks >= 70) {
+            return "B";
+        }
+
+        if (marks >= 60) {
+            return "C";
+        }
+
+        if (marks >= 50) {
+            return "D";
+        }
+
+        if (marks >= 40) {
+            return "E";
+        }
+
         return "F";
     }
 
-}
 
-function showResults() {
+    /*
+    ============================================
+    SEARCH RESULTS
+    ============================================
+    */
 
-    let name = document.getElementById("studentName").value;
-    let studentClass = document.getElementById("studentClass").value;
+    function searchResults() {
 
-    let english = Number(document.getElementById("english").value);
-    let mathematics = Number(document.getElementById("mathematics").value);
-    let science = Number(document.getElementById("science").value);
-    let socialStudies = Number(document.getElementById("socialStudies").value);
-    let agriculture = Number(document.getElementById("agriculture").value);
+        const searchValue =
+            document.getElementById("searchInput").value
+            .trim()
+            .toLowerCase();
 
-    if (name === "" || studentClass === "") {
-        alert("Please enter the student name and class.");
-        return;
+        const message =
+            document.getElementById("message");
+
+        const results =
+            document.getElementById("results");
+
+
+        if (searchValue === "") {
+
+            message.innerHTML =
+                "Please enter a Student ID or Name.";
+
+            results.style.display = "none";
+
+            return;
+        }
+
+
+        const student = students.find(function(student) {
+
+            return (
+                student.id.toLowerCase() === searchValue ||
+                student.name.toLowerCase().includes(searchValue)
+            );
+
+        });
+
+
+        if (!student) {
+
+            message.innerHTML =
+                "❌ Student results not found.";
+
+            results.style.display = "none";
+
+            return;
+        }
+
+
+        message.innerHTML = "";
+
+
+        document.getElementById("studentName").innerText =
+            student.name;
+
+        document.getElementById("studentID").innerText =
+            student.id;
+
+        document.getElementById("studentClass").innerText =
+            student.class;
+
+
+        const table =
+            document.getElementById("resultsTable");
+
+        table.innerHTML = "";
+
+
+        let total = 0;
+
+
+        student.results.forEach(function(result) {
+
+            total += result.marks;
+
+            const grade = getGrade(result.marks);
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${result.subject}</td>
+                <td>${result.marks}</td>
+                <td>${grade}</td>
+            `;
+
+            table.appendChild(row);
+
+        });
+
+
+        const average =
+            total / student.results.length;
+
+
+        document.getElementById("totalMarks").innerText =
+            total;
+
+        document.getElementById("averageMarks").innerText =
+            average.toFixed(2);
+
+
+        results.style.display = "block";
     }
-
-    let total =
-        english +
-        mathematics +
-        science +
-        socialStudies +
-        agriculture;
-
-    let average = total / 5;
-
-    document.getElementById("resultName").textContent = name;
-    document.getElementById("resultClass").textContent = studentClass;
-
-    document.getElementById("englishResult").textContent = english;
-    document.getElementById("englishGrade").textContent = getGrade(english);
-
-    document.getElementById("mathResult").textContent = mathematics;
-    document.getElementById("mathGrade").textContent = getGrade(mathematics);
-
-    document.getElementById("scienceResult").textContent = science;
-    document.getElementById("scienceGrade").textContent = getGrade(science);
-
-    document.getElementById("socialResult").textContent = socialStudies;
-    document.getElementById("socialGrade").textContent = getGrade(socialStudies);
-
-    document.getElementById("agricultureResult").textContent = agriculture;
-    document.getElementById("agricultureGrade").textContent = getGrade(agriculture);
-
-    document.getElementById("total").textContent = total;
-    document.getElementById("average").textContent = average.toFixed(1);
-
-    document.getElementById("results").style.display = "block";
-}
 
 </script>
 
