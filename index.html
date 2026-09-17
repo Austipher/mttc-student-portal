@@ -1,10 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>MTTC Student Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTTC Student Assessment Portal</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #222;
+        }
+
+        header {
+            background: #0b5ed7;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0b5ed7;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 22px;
+            border: none;
+            border-radius: 6px;
+            background: #0b5ed7;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #084298;
+        }
+
+        #results {
+            display: none;
+            margin-top: 25px;
+        }
+
+        .student-info {
+            background: #eef4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 11px;
+            text-align: center;
+        }
+
+        th {
+            background: #0b5ed7;
+            color: white;
+        }
+
+        .summary {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3f3f3;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>MTTC Student Portal</h1>
-    <p>My website is working!</p>
+
+<header>
+    <h1>MTTC Student Assessment Portal</h1>
+    <p>Student Assessment Results</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Enter Student Results</h2>
+
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter student name">
+
+        <label for="studentClass">Class</label>
+        <input type="text" id="studentClass" placeholder="Enter class">
+
+        <label for="english">English</label>
+        <input type="number" id="english" min="0" max="100" placeholder="Enter marks">
+
+        <label for="mathematics">Mathematics</label>
+        <input type="number" id="mathematics" min="0" max="100" placeholder="Enter marks">
+
+        <label for="science">Science</label>
+        <input type="number" id="science" min="0" max="100" placeholder="Enter marks">
+
+        <label for="socialStudies">Social Studies</label>
+        <input type="number" id="socialStudies" min="0" max="100" placeholder="Enter marks">
+
+        <label for="agriculture">Agriculture</label>
+        <input type="number" id="agriculture" min="0" max="100" placeholder="Enter marks">
+
+        <button onclick="showResults()">Calculate Results</button>
+
+        <div id="results">
+
+            <h2>Student Results</h2>
+
+            <div class="student-info">
+                <strong>Name:</strong>
+                <span id="resultName"></span>
+                <br><br>
+                <strong>Class:</strong>
+                <span id="resultClass"></span>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Grade</th>
+                </tr>
+
+                <tr>
+                    <td>English</td>
+                    <td id="englishResult"></td>
+                    <td id="englishGrade"></td>
+                </tr>
+
+                <tr>
+                    <td>Mathematics</td>
+                    <td id="mathResult"></td>
+                    <td id="mathGrade"></td>
+                </tr>
+
+                <tr>
+                    <td>Science</td>
+                    <td id="scienceResult"></td>
+                    <td id="scienceGrade"></td>
+                </tr>
+
+                <tr>
+                    <td>Social Studies</td>
+                    <td id="socialResult"></td>
+                    <td id="socialGrade"></td>
+                </tr>
+
+                <tr>
+                    <td>Agriculture</td>
+                    <td id="agricultureResult"></td>
+                    <td id="agricultureGrade"></td>
+                </tr>
+            </table>
+
+            <div class="summary">
+                <strong>Total Marks:</strong>
+                <span id="total"></span> / 500
+                <br><br>
+
+                <strong>Average:</strong>
+                <span id="average"></span>%
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    MTTC Student Assessment Portal
+</footer>
+
+<script>
+
+function getGrade(mark) {
+
+    if (mark >= 80) {
+        return "A";
+    } else if (mark >= 70) {
+        return "B";
+    } else if (mark >= 60) {
+        return "C";
+    } else if (mark >= 50) {
+        return "D";
+    } else if (mark >= 40) {
+        return "E";
+    } else {
+        return "F";
+    }
+
+}
+
+function showResults() {
+
+    let name = document.getElementById("studentName").value;
+    let studentClass = document.getElementById("studentClass").value;
+
+    let english = Number(document.getElementById("english").value);
+    let mathematics = Number(document.getElementById("mathematics").value);
+    let science = Number(document.getElementById("science").value);
+    let socialStudies = Number(document.getElementById("socialStudies").value);
+    let agriculture = Number(document.getElementById("agriculture").value);
+
+    if (name === "" || studentClass === "") {
+        alert("Please enter the student name and class.");
+        return;
+    }
+
+    let total =
+        english +
+        mathematics +
+        science +
+        socialStudies +
+        agriculture;
+
+    let average = total / 5;
+
+    document.getElementById("resultName").textContent = name;
+    document.getElementById("resultClass").textContent = studentClass;
+
+    document.getElementById("englishResult").textContent = english;
+    document.getElementById("englishGrade").textContent = getGrade(english);
+
+    document.getElementById("mathResult").textContent = mathematics;
+    document.getElementById("mathGrade").textContent = getGrade(mathematics);
+
+    document.getElementById("scienceResult").textContent = science;
+    document.getElementById("scienceGrade").textContent = getGrade(science);
+
+    document.getElementById("socialResult").textContent = socialStudies;
+    document.getElementById("socialGrade").textContent = getGrade(socialStudies);
+
+    document.getElementById("agricultureResult").textContent = agriculture;
+    document.getElementById("agricultureGrade").textContent = getGrade(agriculture);
+
+    document.getElementById("total").textContent = total;
+    document.getElementById("average").textContent = average.toFixed(1);
+
+    document.getElementById("results").style.display = "block";
+}
+
+</script>
+
 </body>
 </html>
