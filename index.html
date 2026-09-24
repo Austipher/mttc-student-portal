@@ -1,371 +1,300 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTTC Student Results Portal</title>
+    <title>MTTC Student Portal</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f5f9;
+            background: #eef4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             margin: 0;
-            padding: 0;
         }
 
-        header {
-            background: #17365d;
-            color: white;
-            text-align: center;
-            padding: 25px 15px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        header p {
-            margin-top: 8px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-
-        .search-box {
+        .login-box {
             background: white;
+            width: 90%;
+            max-width: 400px;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: #075985;
+        }
+
+        h2 {
+            color: #075985;
+            font-size: 20px;
         }
 
         input {
             width: 100%;
-            padding: 14px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
+            padding: 13px;
+            margin: 8px 0;
             box-sizing: border-box;
-            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
 
         button {
             width: 100%;
-            padding: 14px;
-            background: #17365d;
+            padding: 13px;
+            margin-top: 10px;
+            background: #075985;
             color: white;
             border: none;
-            border-radius: 7px;
-            font-size: 16px;
+            border-radius: 8px;
             cursor: pointer;
+            border-radius: 8px;
         }
 
         button:hover {
-            background: #0f2745;
+            background: #064e75;
         }
 
-        #message {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        #results {
-            display: none;
-            background: white;
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .student-info {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background: #17365d;
-            color: white;
-        }
-
-        .summary {
-            margin-top: 20px;
-            font-weight: bold;
-            line-height: 1.8;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
+        .note {
+            font-size: 13px;
             color: #666;
+            margin-top: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>MTTC Student Results Portal</h1>
-    <p>Check your assessment results</p>
-</header>
+<div class="login-box">
 
-<div class="container">
+    <!-- LOGIN SECTION -->
+    <div id="loginSection">
 
-    <div class="search-box">
-        <h2>Search Student Results</h2>
+        <h1>MTTC Student Portal</h1>
 
-        <label>Enter Student ID or Name:</label>
+        <p>Student Login</p>
 
         <input
             type="text"
-            id="searchInput"
-            placeholder="Example: MTTC001 or John Banda"
+            id="studentID"
+            placeholder="Enter Student ID"
         >
 
-        <button onclick="searchResults()">Search Results</button>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+        >
 
-        <div id="message"></div>
+        <button onclick="login()">Login</button>
+
+        <p class="note">
+            First-time password: <b>1234</b>
+        </p>
+
     </div>
 
 
-    <div id="results">
+    <!-- CHANGE PASSWORD SECTION -->
+    <div id="changePasswordSection" class="hidden">
 
-        <h2>Student Results</h2>
+        <h1>MTTC Student Portal</h1>
 
-        <div class="student-info">
-            <strong>Name:</strong> <span id="studentName"></span><br>
-            <strong>Student ID:</strong> <span id="studentID"></span><br>
-            <strong>Class:</strong> <span id="studentClass"></span>
-        </div>
+        <h2>Change Your Password</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Marks</th>
-                    <th>Grade</th>
-                </tr>
-            </thead>
+        <p class="message">
+            You are using the temporary password <b>1234</b>.
+            Please create your own password before continuing.
+        </p>
 
-            <tbody id="resultsTable">
-            </tbody>
-        </table>
+        <input
+            type="password"
+            id="newPassword"
+            placeholder="Enter New Password"
+        >
 
-        <div class="summary">
-            Total Marks: <span id="totalMarks"></span><br>
-            Average: <span id="averageMarks"></span>%
-        </div>
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm New Password"
+        >
+
+        <button onclick="changePassword()">
+            Change Password
+        </button>
 
     </div>
 
 </div>
 
-<footer>
-    MTTC Student Portal
-</footer>
-
 
 <script>
 
-    /*
-    ==================================================
-    STUDENT RESULTS DATABASE
-    ==================================================
-
-    ADD YOUR STUDENTS HERE.
-
-    Change the sample names, IDs, subjects and marks
-    to your own student information.
-    */
-
-    const students = [
-
-        {
-            id: "MTTC001",
-            name: "John Banda",
-            class: "Class D",
-
-            results: [
-                { subject: "English", marks: 75 },
-                { subject: "Mathematics", marks: 82 },
-                { subject: "Science", marks: 68 },
-                { subject: "Social Studies", marks: 74 },
-                { subject: "Agriculture", marks: 80 }
-            ]
-        },
-
-        {
-            id: "MTTC002",
-            name: "Mary Phiri",
-            class: "Class D",
-
-            results: [
-                { subject: "English", marks: 65 },
-                { subject: "Mathematics", marks: 72 },
-                { subject: "Science", marks: 78 },
-                { subject: "Social Studies", marks: 70 },
-                { subject: "Agriculture", marks: 66 }
-            ]
-        }
-
-    ];
+let currentStudentID = "";
 
 
-    /*
-    ============================================
-    AUTOMATIC GRADE
-    ============================================
-    */
+/* =========================
+   STUDENT LOGIN
+   ========================= */
 
-    function getGrade(marks) {
+function login() {
 
-        if (marks >= 80) {
-            return "A";
-        }
+    let id = document.getElementById("studentID").value.trim();
+    let password = document.getElementById("password").value.trim();
 
-        if (marks >= 70) {
-            return "B";
-        }
+    if (id === "") {
+        alert("Please enter your Student ID.");
+        return;
+    }
 
-        if (marks >= 60) {
-            return "C";
-        }
-
-        if (marks >= 50) {
-            return "D";
-        }
-
-        if (marks >= 40) {
-            return "E";
-        }
-
-        return "F";
+    if (password === "") {
+        alert("Please enter your password.");
+        return;
     }
 
 
     /*
-    ============================================
-    SEARCH RESULTS
-    ============================================
+       Each student's password is stored separately.
+
+       If no password has been created yet,
+       the temporary password is 1234.
     */
 
-    function searchResults() {
+    let savedPassword = localStorage.getItem("password_" + id);
 
-        const searchValue =
-            document.getElementById("searchInput").value
-            .trim()
-            .toLowerCase();
-
-        const message =
-            document.getElementById("message");
-
-        const results =
-            document.getElementById("results");
-
-
-        if (searchValue === "") {
-
-            message.innerHTML =
-                "Please enter a Student ID or Name.";
-
-            results.style.display = "none";
-
-            return;
-        }
-
-
-        const student = students.find(function(student) {
-
-            return (
-                student.id.toLowerCase() === searchValue ||
-                student.name.toLowerCase().includes(searchValue)
-            );
-
-        });
-
-
-        if (!student) {
-
-            message.innerHTML =
-                "❌ Student results not found.";
-
-            results.style.display = "none";
-
-            return;
-        }
-
-
-        message.innerHTML = "";
-
-
-        document.getElementById("studentName").innerText =
-            student.name;
-
-        document.getElementById("studentID").innerText =
-            student.id;
-
-        document.getElementById("studentClass").innerText =
-            student.class;
-
-
-        const table =
-            document.getElementById("resultsTable");
-
-        table.innerHTML = "";
-
-
-        let total = 0;
-
-
-        student.results.forEach(function(result) {
-
-            total += result.marks;
-
-            const grade = getGrade(result.marks);
-
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-                <td>${result.subject}</td>
-                <td>${result.marks}</td>
-                <td>${grade}</td>
-            `;
-
-            table.appendChild(row);
-
-        });
-
-
-        const average =
-            total / student.results.length;
-
-
-        document.getElementById("totalMarks").innerText =
-            total;
-
-        document.getElementById("averageMarks").innerText =
-            average.toFixed(2);
-
-
-        results.style.display = "block";
+    if (savedPassword === null) {
+        savedPassword = "1234";
     }
+
+
+    /* Check password */
+
+    if (password !== savedPassword) {
+
+        alert("Incorrect Student ID or password.");
+        return;
+
+    }
+
+
+    /* Save current student */
+
+    currentStudentID = id;
+
+    localStorage.setItem("loggedInStudent", id);
+
+
+    /*
+       If the student is still using 1234,
+       force them to create a new password.
+    */
+
+    if (savedPassword === "1234") {
+
+        document.getElementById("loginSection").classList.add("hidden");
+
+        document.getElementById("changePasswordSection")
+            .classList.remove("hidden");
+
+        return;
+    }
+
+
+    /*
+       Student has already changed password.
+       Continue to dashboard.
+    */
+
+    goToDashboard();
+
+}
+
+
+/* =========================
+   CHANGE PASSWORD
+   ========================= */
+
+function changePassword() {
+
+    let newPassword =
+        document.getElementById("newPassword").value.trim();
+
+    let confirmPassword =
+        document.getElementById("confirmPassword").value.trim();
+
+
+    if (newPassword === "") {
+
+        alert("Please enter a new password.");
+        return;
+
+    }
+
+
+    if (newPassword.length < 4) {
+
+        alert("Password must contain at least 4 characters.");
+        return;
+
+    }
+
+
+    if (newPassword === "1234") {
+
+        alert("Please choose a password different from 1234.");
+        return;
+
+    }
+
+
+    if (newPassword !== confirmPassword) {
+
+        alert("The passwords do not match.");
+        return;
+
+    }
+
+
+    /*
+       Save the new password specifically
+       for this student.
+    */
+
+    localStorage.setItem(
+        "password_" + currentStudentID,
+        newPassword
+    );
+
+
+    alert("Password changed successfully!");
+
+
+    goToDashboard();
+
+}
+
+
+/* =========================
+   OPEN DASHBOARD
+   ========================= */
+
+function goToDashboard() {
+
+    window.location.href = "dashboard.html";
+
+}
 
 </script>
 
