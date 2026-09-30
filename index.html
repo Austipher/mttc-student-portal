@@ -1,688 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MHGTTC Student Portal</title>
+    <title>MHGTTC Student Portal</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef4f8;
-    color: #222;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef4f8;
+            color: #222;
+        }
 
-.container {
-    width: 92%;
-    max-width: 500px;
-    margin: 40px auto;
-}
+        /* HEADER */
+        header {
+            background: #075e54;
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+        }
 
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            background: white;
+        }
 
-h1, h2 {
-    text-align: center;
-    color: #075985;
-}
+        header h1 {
+            margin: 10px 0 5px;
+            font-size: 25px;
+        }
 
-input {
-    width: 100%;
-    padding: 13px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-}
+        header p {
+            margin: 0;
+            font-size: 14px;
+        }
 
-button {
-    width: 100%;
-    padding: 13px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    background: #075985;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
+        /* LOGIN */
+        .login-box {
+            max-width: 400px;
+            background: white;
+            margin: 35px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
 
-button:hover {
-    background: #064e75;
-}
+        .login-box h2 {
+            text-align: center;
+            color: #075e54;
+            margin-bottom: 20px;
+        }
 
-.logout {
-    background: #b91c1c;
-}
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
 
-.logout:hover {
-    background: #991b1b;
-}
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 16px;
+        }
 
-.hidden {
-    display: none;
-}
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 6px;
+            background: #075e54;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-.note {
-    text-align: center;
-    color: #666;
-    font-size: 13px;
-}
+        button:hover {
+            background: #064c44;
+        }
 
-.header {
-    background: #075985;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 15px 15px 0 0;
-}
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 12px;
+        }
 
-.header h1 {
-    color: white;
-    margin: 0;
-}
+        /* DASHBOARD */
+        #dashboard {
+            display: none;
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 15px;
+        }
 
-.info {
-    background: #f0f9ff;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 10px;
-}
+        .student-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            margin-bottom: 20px;
+        }
 
-.info p {
-    margin: 8px 0;
-}
+        .student-card h2 {
+            color: #075e54;
+            margin-top: 0;
+        }
 
-.section {
-    margin-top: 20px;
-}
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
 
-.table-container {
-    overflow-x: auto;
-}
+        .info-box {
+            background: #f2f7f7;
+            padding: 12px;
+            border-radius: 6px;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    min-width: 450px;
-}
+        /* RESULTS TABLE */
+        .results-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            overflow-x: auto;
+        }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
+        .results-box h2 {
+            color: #075e54;
+        }
 
-th {
-    background: #075985;
-    color: white;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
 
-tr:nth-child(even) {
-    background: #f8fafc;
-}
+        th {
+            background: #075e54;
+            color: white;
+            padding: 12px;
+        }
 
-.grade {
-    font-weight: bold;
-}
+        td {
+            padding: 11px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
 
-.message {
-    text-align: center;
-    color: #444;
-}
-</style>
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .average {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e4f3ef;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* TIMETABLE */
+        .timetable {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            overflow-x: auto;
+        }
+
+        .timetable h2 {
+            color: #075e54;
+        }
+
+        /* LOGOUT */
+        .logout {
+            background: #c62828;
+            margin-top: 20px;
+        }
+
+        .logout:hover {
+            background: #a51f1f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media(max-width:600px) {
+
+            header h1 {
+                font-size: 21px;
+            }
+
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+
+            .login-box {
+                margin: 20px 15px;
+            }
+
+            #dashboard {
+                margin: 10px auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- HEADER -->
+<header>
+    <!-- PUT YOUR PORTAL PICTURE HERE -->
+    <img src="logo.jpg" alt="MHGTTC Logo" class="logo">
 
-<!-- ================= LOGIN ================= -->
-
-<div id="loginPage" class="card">
-
-    <h1>MHGTTC</h1>
-    <h2>Student Portal</h2>
-
-    <p class="message">Student Login</p>
-
-    <input
-        type="text"
-        id="studentID"
-        placeholder="Enter Student ID"
-    >
-
-    <input
-        type="password"
-        id="password"
-        placeholder="Enter Password"
-    >
-
-    <button onclick="login()">Login</button>
-
-    <p class="note">
-        First-time password: <b>1234</b>
-    </p>
-
-</div>
+    <h1>MHGTTC STUDENT PORTAL</h1>
+    <p>Assessment Results & Student Information System</p>
+</header>
 
 
-<!-- ================= CHANGE PASSWORD ================= -->
+<!-- LOGIN PAGE -->
+<div id="loginPage">
 
-<div id="passwordPage" class="card hidden">
+    <div class="login-box">
 
-    <h1>MHGTTC</h1>
+        <h2>Student Login</h2>
 
-    <h2>Create Your Password</h2>
+        <label for="studentID">Student ID</label>
+        <input
+            type="text"
+            id="studentID"
+            placeholder="Enter Student ID"
+        >
 
-    <p class="message">
-        You are using the temporary password <b>1234</b>.
-        Please create your own password.
-    </p>
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+        >
 
-    <input
-        type="password"
-        id="newPassword"
-        placeholder="Enter New Password"
-    >
+        <button onclick="login()">LOGIN</button>
 
-    <input
-        type="password"
-        id="confirmPassword"
-        placeholder="Confirm New Password"
-    >
-
-    <button onclick="changePassword()">
-        Save New Password
-    </button>
-
-</div>
-
-
-<!-- ================= DASHBOARD ================= -->
-
-<div id="dashboardPage" class="card hidden">
-
-    <div class="header">
-
-        <h1>MHGTTC</h1>
-
-        <p>Student Assessment Portal</p>
+        <p id="errorMessage" class="error"></p>
 
     </div>
 
+</div>
+
+
+<!-- DASHBOARD -->
+<div id="dashboard">
 
     <!-- STUDENT INFORMATION -->
-
-    <div class="info">
+    <div class="student-card">
 
         <h2>Student Information</h2>
 
-        <p>
-            <b>Student ID:</b>
-            <span id="displayID"></span>
-        </p>
+        <div class="student-info">
 
-        <p>
-            <b>Name:</b>
-            <span id="displayName"></span>
-        </p>
+            <div class="info-box">
+                <strong>Student ID:</strong>
+                <span id="displayID"></span>
+            </div>
 
-        <p>
-            <b>Year:</b>
-            <span id="displayYear"></span>
-        </p>
+            <div class="info-box">
+                <strong>Name:</strong>
+                <span id="displayName"></span>
+            </div>
 
-        <p>
-            <b>Class:</b>
-            <span id="displayClass"></span>
-        </p>
+            <div class="info-box">
+                <strong>Year:</strong>
+                <span id="displayYear"></span>
+            </div>
+
+            <div class="info-box">
+                <strong>Class:</strong>
+                <span id="displayClass"></span>
+            </div>
+
+        </div>
 
     </div>
 
 
     <!-- RESULTS -->
-
-    <div class="section">
+    <div class="results-box">
 
         <h2>Assessment Results</h2>
 
-        <div class="table-container">
+        <table>
 
-            <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>CA</th>
+                    <th>EOM</th>
+                    <th>Final Score</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
 
-                <thead>
+            <tbody id="resultsTable">
+            </tbody>
 
-                    <tr>
-                        <th>Subject</th>
-                        <th>CA</th>
-                        <th>EOM</th>
-                        <th>Final</th>
-                        <th>Grade</th>
-                    </tr>
+        </table>
 
-                </thead>
-
-                <tbody id="resultsTable">
-
-                </tbody>
-
-            </table>
-
+        <div class="average">
+            Average Score:
+            <span id="averageScore">0</span>%
         </div>
 
     </div>
 
 
     <!-- TIMETABLE -->
+    <div class="timetable">
 
-    <div class="section">
+        <h2>Class Timetable</h2>
 
-        <h2>Timetable</h2>
+        <table>
 
-        <div class="table-container">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
 
-            <table>
+            <tbody>
 
-                <thead>
+                <tr>
+                    <td>08:00 - 09:00</td>
+                    <td>Mathematics</td>
+                    <td>English</td>
+                    <td>Science</td>
+                    <td>Chichewa</td>
+                    <td>Social Studies</td>
+                </tr>
 
-                    <tr>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Subject</th>
-                    </tr>
+                <tr>
+                    <td>09:00 - 10:00</td>
+                    <td>Science</td>
+                    <td>Mathematics</td>
+                    <td>English</td>
+                    <td>Life Skills</td>
+                    <td>Expressive Arts</td>
+                </tr>
 
-                </thead>
+                <tr>
+                    <td>10:00 - 10:30</td>
+                    <td colspan="5">BREAK</td>
+                </tr>
 
-                <tbody>
+                <tr>
+                    <td>10:30 - 11:30</td>
+                    <td>Life Skills</td>
+                    <td>Science</td>
+                    <td>Mathematics</td>
+                    <td>English</td>
+                    <td>Education Foundations</td>
+                </tr>
 
-                    <tr>
-                        <td>Monday</td>
-                        <td>08:00</td>
-                        <td>Mathematics</td>
-                    </tr>
+            </tbody>
 
-                    <tr>
-                        <td>Monday</td>
-                        <td>10:00</td>
-                        <td>English</td>
-                    </tr>
-
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>08:00</td>
-                        <td>Science</td>
-                    </tr>
-
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>10:00</td>
-                        <td>Social Studies</td>
-                    </tr>
-
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>08:00</td>
-                        <td>Life Skills</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
+        </table>
 
     </div>
 
 
     <button class="logout" onclick="logout()">
-        Logout
+        LOGOUT
     </button>
 
 </div>
 
-</div>
+
+<footer>
+    © 2026 MHGTTC Student Portal
+</footer>
 
 
 <script>
 
-/* ================= STUDENT DATA ================= */
+    /*
+       STUDENT DATABASE
 
-/*
-   These are TEST records.
+       Add students here.
+       Each student has:
+       ID
+       password
+       name
+       year
+       class
+       results
+    */
 
-   We will later replace these with
-   the real MHGTTC student records.
-*/
+    const students = {
 
-const students = {
+        "MH001": {
+            password: "1234",
+            name: "Nesta Lisausyo",
+            year: "Year 1",
+            class: "Class F",
 
-    "MHG001": {
-        name: "Nesta Lisausyo",
-        year: "Year 1",
-        className: "Class F",
+            results: [
+                {
+                    subject: "English",
+                    ca: 72,
+                    eom: 68
+                },
 
-        results: [
-            ["English", 70, 65],
-            ["Mathematics", 68, 72],
-            ["Science", 75, 70]
-        ]
-    },
+                {
+                    subject: "Mathematics",
+                    ca: 70,
+                    eom: 65
+                },
 
-    "MHG002": {
-        name: "Madalitso Chikombole",
-        year: "Year 1",
-        className: "Class F",
-
-        results: [
-            ["English", 65, 70],
-            ["Mathematics", 60, 68],
-            ["Expressive Arts", 72, 75],
-            ["Human Ecology", 66, 70],
-            ["Chichewa", 74, 72],
-            ["Life Skills", 68, 70],
-            ["Education Foundation Studies", 70, 65],
-            ["Social Studies", 71, 69]
-        ]
-    }
-
-};
-
-
-/* ================= CURRENT STUDENT ================= */
-
-let currentStudentID = "";
+                {
+                    subject: "Science",
+                    ca: 75,
+                    eom: 70
+                }
+            ]
+        },
 
 
-/* ================= LOGIN ================= */
+        "MH002": {
+            password: "1234",
+            name: "Madalitso Chikombole",
+            year: "Year 1",
+            class: "Class F",
 
-function login() {
+            results: [
+                {
+                    subject: "English",
+                    ca: 70,
+                    eom: 65
+                },
 
-    const id =
-        document.getElementById("studentID").value.trim();
+                {
+                    subject: "Mathematics",
+                    ca: 68,
+                    eom: 60
+                },
 
-    const password =
-        document.getElementById("password").value.trim();
+                {
+                    subject: "Expressive Arts",
+                    ca: 72,
+                    eom: 66
+                },
+
+                {
+                    subject: "Humani Ecology",
+                    ca: 69,
+                    eom: 64
+                },
+
+                {
+                    subject: "Chichewa",
+                    ca: 75,
+                    eom: 70
+                },
+
+                {
+                    subject: "Life Skills",
+                    ca: 73,
+                    eom: 68
+                },
+
+                {
+                    subject: "Education Foundation Studies",
+                    ca: 70,
+                    eom: 65
+                },
+
+                {
+                    subject: "Social Studies",
+                    ca: 71,
+                    eom: 67
+                }
+            ]
+        }
+
+    };
 
 
-    if (id === "") {
+    /*
+       LOGIN FUNCTION
+    */
 
-        alert("Please enter your Student ID.");
+    function login() {
 
-        return;
-    }
+        const id =
+            document.getElementById("studentID").value
+            .trim()
+            .toUpperCase();
+
+        const password =
+            document.getElementById("password").value;
+
+        const error =
+            document.getElementById("errorMessage");
 
 
-    if (password === "") {
+        if (students[id] &&
+            students[id].password === password) {
 
-        alert("Please enter your password.");
+            const student = students[id];
 
-        return;
+            document.getElementById("loginPage")
+                .style.display = "none";
+
+            document.getElementById("dashboard")
+                .style.display = "block";
+
+
+            document.getElementById("displayID")
+                .textContent = id;
+
+            document.getElementById("displayName")
+                .textContent = student.name;
+
+            document.getElementById("displayYear")
+                .textContent = student.year;
+
+            document.getElementById("displayClass")
+                .textContent = student.class;
+
+
+            showResults(student.results);
+
+            error.textContent = "";
+
+        } else {
+
+            error.textContent =
+                "Incorrect Student ID or Password.";
+
+        }
+
     }
 
 
     /*
-       Check whether the student exists.
+       SHOW RESULTS
     */
 
-    if (!students[id]) {
+    function showResults(results) {
 
-        alert("Student ID not found.");
+        const table =
+            document.getElementById("resultsTable");
 
-        return;
+        table.innerHTML = "";
+
+        let total = 0;
+
+
+        results.forEach(function(result) {
+
+            /*
+               FINAL SCORE
+
+               Example:
+               CA = 70
+               EOM = 65
+
+               Final =
+               (CA × 40%) + (EOM × 60%)
+            */
+
+            const finalScore =
+                (result.ca * 0.40) +
+                (result.eom * 0.60);
+
+
+            const grade =
+                getGrade(finalScore);
+
+
+            total += finalScore;
+
+
+            const row =
+                document.createElement("tr");
+
+
+            row.innerHTML = `
+                <td>${result.subject}</td>
+                <td>${result.ca}%</td>
+                <td>${result.eom}%</td>
+                <td>${finalScore.toFixed(1)}%</td>
+                <td>${grade}</td>
+            `;
+
+
+            table.appendChild(row);
+
+        });
+
+
+        const average =
+            total / results.length;
+
+
+        document.getElementById("averageScore")
+            .textContent = average.toFixed(1);
+
     }
 
 
     /*
-       Check saved password.
-
-       New students use 1234.
+       GRADING SYSTEM
     */
 
-    let savedPassword =
-        localStorage.getItem("password_" + id);
+    function getGrade(score) {
 
-    if (savedPassword === null) {
+        if (score >= 80) {
+            return "A";
+        }
 
-        savedPassword = "1234";
+        else if (score >= 70) {
+            return "B";
+        }
+
+        else if (score >= 60) {
+            return "C";
+        }
+
+        else if (score >= 50) {
+            return "D";
+        }
+
+        else if (score >= 40) {
+            return "E";
+        }
+
+        else {
+            return "F";
+        }
+
     }
-
-
-    if (password !== savedPassword) {
-
-        alert("Incorrect Student ID or password.");
-
-        return;
-    }
-
-
-    currentStudentID = id;
 
 
     /*
-       First-time users must change
-       the temporary password.
+       LOGOUT
     */
 
-    if (savedPassword === "1234") {
+    function logout() {
+
+        document.getElementById("dashboard")
+            .style.display = "none";
 
         document.getElementById("loginPage")
-            .classList.add("hidden");
+            .style.display = "block";
 
-        document.getElementById("passwordPage")
-            .classList.remove("hidden");
+        document.getElementById("studentID")
+            .value = "";
 
-        return;
+        document.getElementById("password")
+            .value = "";
+
+        document.getElementById("resultsTable")
+            .innerHTML = "";
+
+        document.getElementById("averageScore")
+            .textContent = "0";
+
     }
-
-
-    showDashboard();
-
-}
-
-
-/* ================= CHANGE PASSWORD ================= */
-
-function changePassword() {
-
-    const newPassword =
-        document.getElementById("newPassword").value.trim();
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value.trim();
-
-
-    if (newPassword === "") {
-
-        alert("Please enter a new password.");
-
-        return;
-    }
-
-
-    if (newPassword.length < 4) {
-
-        alert("Password must contain at least 4 characters.");
-
-        return;
-    }
-
-
-    if (newPassword === "1234") {
-
-        alert("Please choose a different password.");
-
-        return;
-    }
-
-
-    if (newPassword !== confirmPassword) {
-
-        alert("Passwords do not match.");
-
-        return;
-    }
-
-
-    localStorage.setItem(
-        "password_" + currentStudentID,
-        newPassword
-    );
-
-
-    alert("Password changed successfully.");
-
-    showDashboard();
-
-}
-
-
-/* ================= SHOW DASHBOARD ================= */
-
-function showDashboard() {
-
-    const student = students[currentStudentID];
-
-
-    document.getElementById("loginPage")
-        .classList.add("hidden");
-
-    document.getElementById("passwordPage")
-        .classList.add("hidden");
-
-    document.getElementById("dashboardPage")
-        .classList.remove("hidden");
-
-
-    document.getElementById("displayID")
-        .textContent = currentStudentID;
-
-    document.getElementById("displayName")
-        .textContent = student.name;
-
-    document.getElementById("displayYear")
-        .textContent = student.year;
-
-    document.getElementById("displayClass")
-        .textContent = student.className;
-
-
-    displayResults(student.results);
-
-}
-
-
-/* ================= RESULTS ================= */
-
-function displayResults(results) {
-
-    const table =
-        document.getElementById("resultsTable");
-
-    table.innerHTML = "";
-
-
-    results.forEach(function(result) {
-
-        const subject = result[0];
-
-        const ca = Number(result[1]);
-
-        const eom = Number(result[2]);
-
-
-        /*
-           Example calculation:
-
-           CA = 40%
-           EOM = 60%
-
-           Final = CA × 40% + EOM × 60%
-        */
-
-        const finalScore =
-            (ca * 0.40) + (eom * 0.60);
-
-
-        const grade =
-            getGrade(finalScore);
-
-
-        const row =
-            document.createElement("tr");
-
-
-        row.innerHTML = `
-
-            <td>${subject}</td>
-
-            <td>${ca}</td>
-
-            <td>${eom}</td>
-
-            <td>${finalScore.toFixed(1)}</td>
-
-            <td class="grade">${grade}</td>
-
-        `;
-
-
-        table.appendChild(row);
-
-    });
-
-}
-
-
-/* ================= GRADE ================= */
-
-function getGrade(score) {
-
-    if (score >= 80) return "A";
-
-    if (score >= 70) return "B";
-
-    if (score >= 60) return "C";
-
-    if (score >= 50) return "D";
-
-    if (score >= 40) return "E";
-
-    return "F";
-
-}
-
-
-/* ================= LOGOUT ================= */
-
-function logout() {
-
-    currentStudentID = "";
-
-    document.getElementById("dashboardPage")
-        .classList.add("hidden");
-
-    document.getElementById("loginPage")
-        .classList.remove("hidden");
-
-    document.getElementById("studentID")
-        .value = "";
-
-    document.getElementById("password")
-        .value = "";
-
-}
 
 </script>
 
