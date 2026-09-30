@@ -1,252 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MHGTTC Student Portal</title>
+<title>MHGTTC Student Portal</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #eef4f8;
-            color: #222;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef4f8;
+    color: #222;
+}
 
-        /* HEADER */
-        header {
-            background: #075e54;
-            color: white;
-            padding: 20px 15px;
-            text-align: center;
-        }
+/* HEADER */
+.header {
+    background: #075e54;
+    color: white;
+    padding: 18px 15px;
+    text-align: center;
+}
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            background: white;
-        }
+.header h1 {
+    margin: 0;
+    font-size: 26px;
+}
 
-        header h1 {
-            margin: 10px 0 5px;
-            font-size: 25px;
-        }
+.header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+}
 
-        header p {
-            margin: 0;
-            font-size: 14px;
-        }
+/* COLLEGE IMAGE */
+.college-image {
+    width: 100%;
+    max-width: 700px;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    margin: 18px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.20);
+}
 
-        /* LOGIN */
-        .login-box {
-            max-width: 400px;
-            background: white;
-            margin: 35px auto;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-        }
+/* MAIN CONTAINER */
+.container {
+    width: 94%;
+    max-width: 900px;
+    margin: auto;
+}
 
-        .login-box h2 {
-            text-align: center;
-            color: #075e54;
-            margin-bottom: 20px;
-        }
+/* LOGIN */
+.login-box {
+    background: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    max-width: 500px;
+}
 
-        label {
-            display: block;
-            margin-top: 12px;
-            font-weight: bold;
-        }
+.login-box h2 {
+    text-align: center;
+    color: #075e54;
+    margin-top: 0;
+}
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            border: 1px solid #bbb;
-            border-radius: 6px;
-            font-size: 16px;
-        }
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
 
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 6px;
-            background: #075e54;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 16px;
+}
 
-        button:hover {
-            background: #064c44;
-        }
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-        .error {
-            color: red;
-            text-align: center;
-            margin-top: 12px;
-        }
+.login-btn {
+    width: 100%;
+    background: #075e54;
+    color: white;
+    margin-top: 20px;
+}
 
-        /* DASHBOARD */
-        #dashboard {
-            display: none;
-            max-width: 1000px;
-            margin: 25px auto;
-            padding: 15px;
-        }
+.login-btn:hover {
+    background: #064c44;
+}
 
-        .student-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-            margin-bottom: 20px;
-        }
+.message {
+    text-align: center;
+    margin-top: 12px;
+    font-weight: bold;
+}
 
-        .student-card h2 {
-            color: #075e54;
-            margin-top: 0;
-        }
+/* DASHBOARD */
+#dashboard {
+    display: none;
+}
 
-        .student-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
+.dashboard-header {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+}
 
-        .info-box {
-            background: #f2f7f7;
-            padding: 12px;
-            border-radius: 6px;
-        }
+.dashboard-header h2 {
+    margin-top: 0;
+    color: #075e54;
+}
 
-        /* RESULTS TABLE */
-        .results-box {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-            overflow-x: auto;
-        }
+.student-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
 
-        .results-box h2 {
-            color: #075e54;
-        }
+.info-card {
+    background: #eef4f8;
+    padding: 12px;
+    border-radius: 8px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 650px;
-        }
+.info-card strong {
+    display: block;
+    color: #075e54;
+    margin-bottom: 4px;
+}
 
-        th {
-            background: #075e54;
-            color: white;
-            padding: 12px;
-        }
+/* RESULTS */
+.results-box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+    margin-bottom: 20px;
+}
 
-        td {
-            padding: 11px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
+.results-box h2 {
+    color: #075e54;
+    margin-top: 0;
+}
 
-        tr:nth-child(even) {
-            background: #f5f5f5;
-        }
+.table-container {
+    overflow-x: auto;
+}
 
-        .average {
-            margin-top: 20px;
-            padding: 15px;
-            background: #e4f3ef;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
 
-        /* TIMETABLE */
-        .timetable {
-            background: white;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-            overflow-x: auto;
-        }
+th {
+    background: #075e54;
+    color: white;
+    padding: 12px;
+}
 
-        .timetable h2 {
-            color: #075e54;
-        }
+td {
+    padding: 11px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
 
-        /* LOGOUT */
-        .logout {
-            background: #c62828;
-            margin-top: 20px;
-        }
+tr:nth-child(even) {
+    background: #f4f8fa;
+}
 
-        .logout:hover {
-            background: #a51f1f;
-        }
+/* SUMMARY */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 13px;
-        }
+.summary-card {
+    background: #eef4f8;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
 
-        /* MOBILE */
-        @media(max-width:600px) {
+.summary-card h3 {
+    margin: 0;
+    color: #075e54;
+}
 
-            header h1 {
-                font-size: 21px;
-            }
+.summary-card p {
+    font-size: 20px;
+    font-weight: bold;
+}
 
-            .student-info {
-                grid-template-columns: 1fr;
-            }
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
 
-            .login-box {
-                margin: 20px 15px;
-            }
+.logout-btn {
+    background: #c62828;
+    color: white;
+}
 
-            #dashboard {
-                margin: 10px auto;
-            }
-        }
-    </style>
+.print-btn {
+    background: #1565c0;
+    color: white;
+}
+
+.action-buttons button:hover {
+    opacity: 0.9;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    background: #075e54;
+    color: white;
+    padding: 18px;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .college-image {
+        height: 190px;
+    }
+
+    .student-info {
+        grid-template-columns: 1fr;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .login-box {
+        padding: 20px;
+    }
+}
+
+/* PRINT */
+@media print {
+
+    .login-box,
+    .action-buttons,
+    footer {
+        display: none !important;
+    }
+
+    #dashboard {
+        display: block !important;
+    }
+
+    body {
+        background: white;
+    }
+
+    .college-image {
+        height: 180px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <!-- HEADER -->
-<header>
-    <!-- PUT YOUR PORTAL PICTURE HERE -->
-    <img src="logo.jpg" alt="MHGTTC Logo" class="logo">
-
+<div class="header">
     <h1>MHGTTC STUDENT PORTAL</h1>
-    <p>Assessment Results & Student Information System</p>
-</header>
+    <p>Machinga Teachers Training College</p>
+</div>
 
+<div class="container">
 
-<!-- LOGIN PAGE -->
-<div id="loginPage">
+    <!-- COLLEGE IMAGE -->
+    <img
+        src="1789800578315.jpg"
+        alt="Machinga Teachers Training College"
+        class="college-image"
+    >
 
-    <div class="login-box">
+    <!-- LOGIN SECTION -->
+    <div class="login-box" id="loginBox">
 
         <h2>Student Login</h2>
+
+        <p style="text-align:center;">
+            Enter your Student ID and Password
+        </p>
 
         <label for="studentID">Student ID</label>
         <input
@@ -262,438 +332,510 @@
             placeholder="Enter Password"
         >
 
-        <button onclick="login()">LOGIN</button>
+        <button class="login-btn" onclick="login()">
+            Login
+        </button>
 
-        <p id="errorMessage" class="error"></p>
+        <div class="message" id="loginMessage"></div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <div id="dashboard">
+
+        <div class="dashboard-header">
+
+            <h2>Student Dashboard</h2>
+
+            <div class="student-info">
+
+                <div class="info-card">
+                    <strong>Student ID</strong>
+                    <span id="displayID"></span>
+                </div>
+
+                <div class="info-card">
+                    <strong>Name</strong>
+                    <span id="displayName"></span>
+                </div>
+
+                <div class="info-card">
+                    <strong>Year</strong>
+                    <span id="displayYear"></span>
+                </div>
+
+                <div class="info-card">
+                    <strong>Class</strong>
+                    <span id="displayClass"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <div class="results-box">
+
+            <h2>Assessment Results</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Assignment / CA</th>
+                            <th>EOM Exam</th>
+                            <th>Final Score</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="resultsBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+            <div class="summary">
+
+                <div class="summary-card">
+                    <h3>Average</h3>
+                    <p id="average">-</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Subjects</h3>
+                    <p id="subjectCount">-</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Overall Grade</h3>
+                    <p id="overallGrade">-</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+
+            <button class="print-btn" onclick="window.print()">
+                Print Results
+            </button>
+
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
+
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- DASHBOARD -->
-<div id="dashboard">
-
-    <!-- STUDENT INFORMATION -->
-    <div class="student-card">
-
-        <h2>Student Information</h2>
-
-        <div class="student-info">
-
-            <div class="info-box">
-                <strong>Student ID:</strong>
-                <span id="displayID"></span>
-            </div>
-
-            <div class="info-box">
-                <strong>Name:</strong>
-                <span id="displayName"></span>
-            </div>
-
-            <div class="info-box">
-                <strong>Year:</strong>
-                <span id="displayYear"></span>
-            </div>
-
-            <div class="info-box">
-                <strong>Class:</strong>
-                <span id="displayClass"></span>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- RESULTS -->
-    <div class="results-box">
-
-        <h2>Assessment Results</h2>
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>CA</th>
-                    <th>EOM</th>
-                    <th>Final Score</th>
-                    <th>Grade</th>
-                </tr>
-            </thead>
-
-            <tbody id="resultsTable">
-            </tbody>
-
-        </table>
-
-        <div class="average">
-            Average Score:
-            <span id="averageScore">0</span>%
-        </div>
-
-    </div>
-
-
-    <!-- TIMETABLE -->
-    <div class="timetable">
-
-        <h2>Class Timetable</h2>
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>08:00 - 09:00</td>
-                    <td>Mathematics</td>
-                    <td>English</td>
-                    <td>Science</td>
-                    <td>Chichewa</td>
-                    <td>Social Studies</td>
-                </tr>
-
-                <tr>
-                    <td>09:00 - 10:00</td>
-                    <td>Science</td>
-                    <td>Mathematics</td>
-                    <td>English</td>
-                    <td>Life Skills</td>
-                    <td>Expressive Arts</td>
-                </tr>
-
-                <tr>
-                    <td>10:00 - 10:30</td>
-                    <td colspan="5">BREAK</td>
-                </tr>
-
-                <tr>
-                    <td>10:30 - 11:30</td>
-                    <td>Life Skills</td>
-                    <td>Science</td>
-                    <td>Mathematics</td>
-                    <td>English</td>
-                    <td>Education Foundations</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <button class="logout" onclick="logout()">
-        LOGOUT
-    </button>
-
-</div>
-
-
+<!-- FOOTER -->
 <footer>
-    © 2026 MHGTTC Student Portal
+    <strong>MHGTTC Student Portal</strong><br>
+    Machinga Teachers Training College<br>
+    © 2026 MHGTTC
 </footer>
 
 
 <script>
 
-    /*
-       STUDENT DATABASE
+/*
+==================================================
+MHGTTC STUDENT DATA
+==================================================
 
-       Add students here.
-       Each student has:
-       ID
-       password
-       name
-       year
-       class
-       results
-    */
+Add more students inside this section.
 
-    const students = {
+Student ID:
+Password:
+Name:
+Year:
+Class:
+Results:
+==================================================
+*/
 
-        "MH001": {
-            password: "1234",
-            name: "Nesta Lisausyo",
-            year: "Year 1",
-            class: "Class F",
+const students = {
 
-            results: [
-                {
-                    subject: "English",
-                    ca: 72,
-                    eom: 68
-                },
+    "MHGTTC001": {
 
-                {
-                    subject: "Mathematics",
-                    ca: 70,
-                    eom: 65
-                },
+        password: "12345",
 
-                {
-                    subject: "Science",
-                    ca: 75,
-                    eom: 70
-                }
-            ]
-        },
+        name: "Nesta Lisausyo",
 
+        year: "Year 1",
 
-        "MH002": {
-            password: "1234",
-            name: "Madalitso Chikombole",
-            year: "Year 1",
-            class: "Class F",
+        className: "Class F",
 
-            results: [
-                {
-                    subject: "English",
-                    ca: 70,
-                    eom: 65
-                },
+        results: [
 
-                {
-                    subject: "Mathematics",
-                    ca: 68,
-                    eom: 60
-                },
+            {
+                subject: "English",
+                ca: 32,
+                exam: 55
+            },
 
-                {
-                    subject: "Expressive Arts",
-                    ca: 72,
-                    eom: 66
-                },
+            {
+                subject: "Mathematics",
+                ca: 35,
+                exam: 60
+            },
 
-                {
-                    subject: "Humani Ecology",
-                    ca: 69,
-                    eom: 64
-                },
+            {
+                subject: "Science",
+                ca: 34,
+                exam: 58
+            }
 
-                {
-                    subject: "Chichewa",
-                    ca: 75,
-                    eom: 70
-                },
+        ]
 
-                {
-                    subject: "Life Skills",
-                    ca: 73,
-                    eom: 68
-                },
-
-                {
-                    subject: "Education Foundation Studies",
-                    ca: 70,
-                    eom: 65
-                },
-
-                {
-                    subject: "Social Studies",
-                    ca: 71,
-                    eom: 67
-                }
-            ]
-        }
-
-    };
+    },
 
 
-    /*
-       LOGIN FUNCTION
-    */
+    "MHGTTC002": {
 
-    function login() {
+        password: "12345",
 
-        const id =
-            document.getElementById("studentID").value
-            .trim()
-            .toUpperCase();
+        name: "Madalitso Chikombole",
 
-        const password =
-            document.getElementById("password").value;
+        year: "Year 1",
 
-        const error =
-            document.getElementById("errorMessage");
+        className: "Class F",
+
+        results: [
+
+            {
+                subject: "English",
+                ca: 30,
+                exam: 52
+            },
+
+            {
+                subject: "Mathematics",
+                ca: 35,
+                exam: 60
+            },
+
+            {
+                subject: "Expressive Arts",
+                ca: 32,
+                exam: 55
+            },
+
+            {
+                subject: "Human Ecology",
+                ca: 31,
+                exam: 54
+            },
+
+            {
+                subject: "Chichewa",
+                ca: 34,
+                exam: 58
+            },
+
+            {
+                subject: "Life Skills",
+                ca: 33,
+                exam: 56
+            },
+
+            {
+                subject: "Education Foundation Studies",
+                ca: 30,
+                exam: 50
+            },
+
+            {
+                subject: "Social Studies",
+                ca: 32,
+                exam: 55
+            }
+
+        ]
+
+    }
+
+};
 
 
-        if (students[id] &&
-            students[id].password === password) {
+/*
+==================================================
+GRADE SYSTEM
+==================================================
+*/
 
-            const student = students[id];
+function getGrade(score) {
 
-            document.getElementById("loginPage")
-                .style.display = "none";
+    if (score >= 80) {
+        return "A";
+    }
 
-            document.getElementById("dashboard")
-                .style.display = "block";
+    if (score >= 70) {
+        return "B";
+    }
+
+    if (score >= 60) {
+        return "C";
+    }
+
+    if (score >= 50) {
+        return "D";
+    }
+
+    if (score >= 40) {
+        return "E";
+    }
+
+    return "F";
+}
 
 
-            document.getElementById("displayID")
-                .textContent = id;
+/*
+==================================================
+CALCULATE FINAL SCORE
+==================================================
 
-            document.getElementById("displayName")
-                .textContent = student.name;
+CA = 40%
+EOM = 60%
 
-            document.getElementById("displayYear")
-                .textContent = student.year;
+Final Score =
+CA + EOM weighted according to percentage.
+==================================================
+*/
 
-            document.getElementById("displayClass")
-                .textContent = student.class;
+function calculateFinalScore(ca, exam) {
+
+    let finalScore =
+        (ca * 0.40) +
+        (exam * 0.60);
+
+    return Math.round(finalScore);
+
+}
 
 
-            showResults(student.results);
+/*
+==================================================
+LOGIN
+==================================================
+*/
 
-            error.textContent = "";
+function login() {
 
-        } else {
+    const studentID =
+        document.getElementById("studentID").value.trim();
 
-            error.textContent =
-                "Incorrect Student ID or Password.";
+    const password =
+        document.getElementById("password").value.trim();
 
-        }
+    const message =
+        document.getElementById("loginMessage");
 
+
+    if (studentID === "" || password === "") {
+
+        message.style.color = "red";
+
+        message.innerHTML =
+            "Please enter Student ID and Password.";
+
+        return;
+    }
+
+
+    const student = students[studentID];
+
+
+    if (!student) {
+
+        message.style.color = "red";
+
+        message.innerHTML =
+            "Student ID not found.";
+
+        return;
+    }
+
+
+    if (student.password !== password) {
+
+        message.style.color = "red";
+
+        message.innerHTML =
+            "Incorrect password.";
+
+        return;
     }
 
 
     /*
-       SHOW RESULTS
+    Login successful
     */
 
-    function showResults(results) {
+    message.innerHTML = "";
 
-        const table =
-            document.getElementById("resultsTable");
+    document.getElementById("loginBox").style.display =
+        "none";
 
-        table.innerHTML = "";
-
-        let total = 0;
-
-
-        results.forEach(function(result) {
-
-            /*
-               FINAL SCORE
-
-               Example:
-               CA = 70
-               EOM = 65
-
-               Final =
-               (CA × 40%) + (EOM × 60%)
-            */
-
-            const finalScore =
-                (result.ca * 0.40) +
-                (result.eom * 0.60);
-
-
-            const grade =
-                getGrade(finalScore);
-
-
-            total += finalScore;
-
-
-            const row =
-                document.createElement("tr");
-
-
-            row.innerHTML = `
-                <td>${result.subject}</td>
-                <td>${result.ca}%</td>
-                <td>${result.eom}%</td>
-                <td>${finalScore.toFixed(1)}%</td>
-                <td>${grade}</td>
-            `;
-
-
-            table.appendChild(row);
-
-        });
-
-
-        const average =
-            total / results.length;
-
-
-        document.getElementById("averageScore")
-            .textContent = average.toFixed(1);
-
-    }
+    document.getElementById("dashboard").style.display =
+        "block";
 
 
     /*
-       GRADING SYSTEM
+    Display student information
     */
 
-    function getGrade(score) {
+    document.getElementById("displayID").innerText =
+        studentID;
 
-        if (score >= 80) {
-            return "A";
-        }
+    document.getElementById("displayName").innerText =
+        student.name;
 
-        else if (score >= 70) {
-            return "B";
-        }
+    document.getElementById("displayYear").innerText =
+        student.year;
 
-        else if (score >= 60) {
-            return "C";
-        }
-
-        else if (score >= 50) {
-            return "D";
-        }
-
-        else if (score >= 40) {
-            return "E";
-        }
-
-        else {
-            return "F";
-        }
-
-    }
+    document.getElementById("displayClass").innerText =
+        student.className;
 
 
     /*
-       LOGOUT
+    Display results
     */
 
-    function logout() {
+    displayResults(student.results);
 
-        document.getElementById("dashboard")
-            .style.display = "none";
+}
 
-        document.getElementById("loginPage")
-            .style.display = "block";
 
-        document.getElementById("studentID")
-            .value = "";
+/*
+==================================================
+DISPLAY RESULTS
+==================================================
+*/
 
-        document.getElementById("password")
-            .value = "";
+function displayResults(results) {
 
-        document.getElementById("resultsTable")
-            .innerHTML = "";
+    const table =
+        document.getElementById("resultsBody");
 
-        document.getElementById("averageScore")
-            .textContent = "0";
+    table.innerHTML = "";
 
-    }
+
+    let total = 0;
+
+
+    results.forEach(function(result) {
+
+        const finalScore =
+            calculateFinalScore(
+                result.ca,
+                result.exam
+            );
+
+
+        const grade =
+            getGrade(finalScore);
+
+
+        total += finalScore;
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td>${result.subject}</td>
+
+            <td>${result.ca}</td>
+
+            <td>${result.exam}</td>
+
+            <td><strong>${finalScore}</strong></td>
+
+            <td><strong>${grade}</strong></td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+
+    /*
+    Average
+    */
+
+    const average =
+        results.length > 0
+        ? Math.round(total / results.length)
+        : 0;
+
+
+    document.getElementById("average").innerText =
+        average + "%";
+
+
+    /*
+    Number of subjects
+    */
+
+    document.getElementById("subjectCount").innerText =
+        results.length;
+
+
+    /*
+    Overall grade
+    */
+
+    document.getElementById("overallGrade").innerText =
+        getGrade(average);
+
+}
+
+
+/*
+==================================================
+LOGOUT
+==================================================
+*/
+
+function logout() {
+
+    document.getElementById("dashboard").style.display =
+        "none";
+
+    document.getElementById("loginBox").style.display =
+        "block";
+
+
+    document.getElementById("studentID").value =
+        "";
+
+    document.getElementById("password").value =
+        "";
+
+    document.getElementById("loginMessage").innerHTML =
+        "";
+
+}
 
 </script>
 
