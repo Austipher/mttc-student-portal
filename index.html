@@ -319,6 +319,7 @@ footer {
         </p>
 
         <label for="studentID">Student ID</label>
+
         <input
             type="text"
             id="studentID"
@@ -326,6 +327,7 @@ footer {
         >
 
         <label for="password">Password</label>
+
         <input
             type="password"
             id="password"
@@ -385,6 +387,7 @@ footer {
                 <table>
 
                     <thead>
+
                         <tr>
                             <th>Subject</th>
                             <th>Assignment / CA</th>
@@ -392,10 +395,10 @@ footer {
                             <th>Final Score</th>
                             <th>Grade</th>
                         </tr>
+
                     </thead>
 
-                    <tbody id="resultsBody">
-                    </tbody>
+                    <tbody id="resultsBody"></tbody>
 
                 </table>
 
@@ -458,14 +461,17 @@ footer {
 MHGTTC STUDENT DATA
 ==================================================
 
-Add more students inside this section.
+For now, these are TEST STUDENTS.
 
-Student ID:
-Password:
-Name:
-Year:
-Class:
-Results:
+Later we can add the full 480 students.
+
+Each student has:
+Student ID
+Password
+Name
+Year
+Class
+Results
 ==================================================
 */
 
@@ -575,7 +581,14 @@ const students = {
 
 /*
 ==================================================
-GRADE SYSTEM
+CORRECT GRADE SYSTEM
+==================================================
+
+80 - 100 = A
+60 - 79  = B
+50 - 59  = C
+40 - 49  = D
+0  - 39  = F
 ==================================================
 */
 
@@ -585,20 +598,16 @@ function getGrade(score) {
         return "A";
     }
 
-    if (score >= 70) {
+    if (score >= 60) {
         return "B";
     }
 
-    if (score >= 60) {
+    if (score >= 50) {
         return "C";
     }
 
-    if (score >= 50) {
-        return "D";
-    }
-
     if (score >= 40) {
-        return "E";
+        return "D";
     }
 
     return "F";
@@ -614,7 +623,7 @@ CA = 40%
 EOM = 60%
 
 Final Score =
-CA + EOM weighted according to percentage.
+CA × 40% + EOM × 60%
 ==================================================
 */
 
@@ -683,9 +692,7 @@ function login() {
     }
 
 
-    /*
-    Login successful
-    */
+    /* LOGIN SUCCESSFUL */
 
     message.innerHTML = "";
 
@@ -696,9 +703,7 @@ function login() {
         "block";
 
 
-    /*
-    Display student information
-    */
+    /* DISPLAY STUDENT INFORMATION */
 
     document.getElementById("displayID").innerText =
         studentID;
@@ -713,9 +718,7 @@ function login() {
         student.className;
 
 
-    /*
-    Display results
-    */
+    /* DISPLAY RESULTS */
 
     displayResults(student.results);
 
@@ -767,7 +770,7 @@ function displayResults(results) {
 
             <td>${result.exam}</td>
 
-            <td><strong>${finalScore}</strong></td>
+            <td><strong>${finalScore}%</strong></td>
 
             <td><strong>${grade}</strong></td>
 
@@ -780,7 +783,7 @@ function displayResults(results) {
 
 
     /*
-    Average
+    CALCULATE AVERAGE
     */
 
     const average =
@@ -794,7 +797,7 @@ function displayResults(results) {
 
 
     /*
-    Number of subjects
+    NUMBER OF SUBJECTS
     */
 
     document.getElementById("subjectCount").innerText =
@@ -802,7 +805,7 @@ function displayResults(results) {
 
 
     /*
-    Overall grade
+    OVERALL GRADE
     */
 
     document.getElementById("overallGrade").innerText =
@@ -841,3 +844,27 @@ function logout() {
 
 </body>
 </html>
+
+What has been corrected
+
+The important change is now:
+
+0–39 = F | 40–49 = D | 50–59 = C | 60–79 = B | 80–100 = A
+
+I also made the Final Score display with "%", so students will see, for example, 67% instead of just 67.
+
+What you should do now
+
+Do not add the 480 students yet.
+
+1. Open SPCK.
+2. Open your "index.html".
+3. Delete the old code.
+4. Paste the complete code above.
+5. Save it.
+6. Test with:
+   - Student ID: "MHGTTC001"
+   - Password: "12345"
+7. Check that the grades are correct.
+
+Once that works, then we can put the 480 student records into the portal.
