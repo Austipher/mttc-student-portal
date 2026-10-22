@@ -1,71 +1,23 @@
-<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>MHG TTC MACHINGA</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f5f7fb}header{background:#0a1931;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}header b{color:#f4b400}.y{background:#f4b400;color:#000;border:0;padding:8px 16px;border-radius:20px;font-weight:700}nav{background:#0a1931;color:#a0aec0;padding:0 16px 8px;display:flex;gap:16px;overflow:auto}nav div{padding:12px 0;white-space:nowrap;font-size:14px}.hero{background:#0a1931;color:#fff;padding:18px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.hero h1{font-size:26px;line-height:1.2}.hero span{color:#f4b400}.hero p{color:#a0aec0;font-size:13px;margin-top:8px}.hero img{width:135px;height:80px;object-fit:cover;border-radius:10px;border:2px solid #f4b400}.stats{display:flex;gap:10px;padding:12px;background:#fff;overflow:auto}.stat{min-width:90px;background:#fff;border-radius:12px;padding:11px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.1)}.card{background:#fff;margin:10px;padding:14px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}input,button{width:100%;padding:11px;margin-top:7px;border-radius:8px;border:1px solid #ccc}button.m{background:#0a1931;color:#fff;border:0;font-weight:700}.h{display:none}th,td{border:1px solid #ddd;padding:6px;font-size:12px}th{background:#0a1931;color:#fff}</style></head><body>
-<header><b>MHG TTC MACHINGA</b><button class=y onclick="document.getElementById('login').scrollIntoView()">Login</button></header>
-<nav><div>Home</div><div>Departments</div><div>About</div><div>Boma Mail</div></nav>
-<div class=hero><div style=flex:1><h1>Welcome to<br><span>MHG TTC Machinga College</span></h1><p>Real MHG Campus - IPTE21 480 Students - Board + Own Results + Own Password</p><button class=y style=margin-top:12px onclick="document.getElementById('login').scrollIntoView()">Login to Portal</button></div><img src="campus.jpg" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400'" alt="MHG"></div>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MHG TTC MACHINGA</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f5f7fb}header{background:#0a1931;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}header b{color:#f4b400}.y{background:#f4b400;color:#000;border:0;padding:9px 20px;border-radius:20px;font-weight:700;cursor:pointer}nav{background:#0a1931;color:#a0aec0;padding:0 16px 8px;display:flex;gap:16px;overflow:auto}nav div{padding:12px 0;white-space:nowrap;font-size:14px}.hero{background:#0a1931;color:#fff;padding:18px 16px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}.hero h1{font-size:24px;line-height:1.2}.hero h1 span{color:#f4b400}.hero p{color:#a0aec0;font-size:13px;margin-top:8px}.hero img{width:140px;height:85px;object-fit:cover;border-radius:10px;border:2px solid #f4b400;background:#fff}.stats{display:flex;gap:8px;padding:12px;background:#fff;overflow:auto}.stat{min-width:85px;background:#fff;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.1)}.stat b{font-size:16px;color:#0a1931;display:block}.card{background:#fff;margin:10px;padding:14px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}input,button{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:1px solid #ccc;font-size:14px}button.m{background:#0a1931;color:#fff;border:0;font-weight:700;cursor:pointer}.h{display:none}table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}th,td{border:1px solid #ddd;padding:5px}th{background:#0a1931;color:#fff}</style></head><body>
+<header><b>MHG TTC MACHINGA</b><button class=y onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">Login</button></header>
+<div class=hero><div style=flex:1;min-width:180px><h1>Welcome to<br><span>MHG TTC Machinga College</span></h1><p>Real MHG Campus - IPTE21 480 Students - Board + Own Results + Own Password</p><button class=y style=margin-top:10px onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">Login to Portal</button></div><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400" alt="MHG Campus"></div>
 <div class=stats><div class=stat><b>99%</b><br><small>Pass Rate</small></div><div class=stat><b>480</b><br><small>Bed</small></div><div class=stat><b>2010</b><br><small>Opened</small></div><div class=stat><b>IPTE21</b><br><small>Cohort</small></div></div>
 
-<div class=card id=login><h3 style=text-align:center>🔐 ONE Portal Login - Admin & Students</h3><p style=text-align:center;font-size:12px;color:#666;margin-top:4px>Admin: admin / 1234 | Students: IPTE21-001 / 1234</p><input id=u placeholder="Username / Reg No: admin or IPTE21-001"><input id=p type=password placeholder="Password: 1234"><button class=m onclick="LOGIN()">Login</button><div id=out style=margin-top:14px></div></div>
+<div class=card id=login style=border:3px solid #f4b400><h3 style=text-align:center>🔐 ONE Portal Login - Admin & Students</h3><p style=text-align:center;font-size:12px;color:#666;margin-top:6px>Admin: <b>admin / 1234</b><br>Students: <b>IPTE21-001 to 480 / 1234</b></p><input id=u placeholder="admin or IPTE21-005"><input id=p type=password placeholder="1234"><button class=m onclick="LOGIN()">Login Now</button><div id=out style=margin-top:12px;font-size:13px"></div></div>
 
-<div class=card id=adminPanel style=display:none;border:2px solid #0a1931><h3>👩‍🏫 Admin Panel - IPTE21 480 Students</h3><p style=font-size:12px;color:#666>Logged as admin - Create Student + Password + Results</p><input id=nn placeholder="Full Name: Austipher Banda"><input id=rr placeholder="Reg No: IPTE21-010"><input id=ppw placeholder="Set Student Password"><input id=gg placeholder="Grade: B+ Credit"><button class=m onclick="CREATE()">Create Student</button><button class=m style=background:#444;margin-top:6px onclick="LOGOUT()">Logout</button><div id=msg style=margin-top:10px></div><div style=max-height:250px;overflow:auto><table id=t><tr><th>Reg</th><th>Name</th><th>Pass</th><th>Grade</th><th>X</th></tr></table></div></div>
+<div class=card id=adminPanel style=display:none;border:2px solid #0a1931><h3>Admin Panel - 480 Students</h3><input id=nName placeholder="Full Name"><input id=nReg placeholder="Reg No: IPTE21-481"><input id=nPass placeholder="Password"><input id=nGrade placeholder="Grade"><button class=m onclick="CREATE()">Create Student</button><button class=m style=background:#444;margin-top:6px onclick="LOGOUT()">Logout</button><div id=msg style=margin-top:8px"></div><div style=max-height:250px;overflow:auto><table id=t><tr><th>Reg</th><th>Name</th><th>Pass</th><th>Grade</th><th>X</th></tr></table></div></div>
 
-<div class=card id=studentPanel style=display:none;border:2px solid green><h3>🎓 Student Panel</h3><div id=sInfo></div><div style=margin-top:14px;border-top:1px solid #ddd;padding-top:12px><b>Change My Password</b><input id=n1 type=password placeholder="New Password"><input id=n2 type=password placeholder="Confirm New Password"><button class=m style=background:#f4b400;color:#000 onclick="CHANGE()">Update My Password</button><div id=cm style=margin-top:8px;font-size:13px></div></div><button class=m style=background:#444;margin-top:12px onclick="LOGOUT()">Logout</button></div>
+<div class=card id=studentPanel style=display:none;border:2px solid green><h3>Student Panel</h3><div id=sInfo></div><div style=margin-top:12px;border-top:1px solid #ddd;padding-top:12px><b>🔑 Change My Password</b><input id=n1 type=password placeholder="New Password"><input id=n2 type=password placeholder="Confirm New Password"><button class=m style=background:#f4b400;color:#000 onclick="CHANGE()">Update My Password</button><div id=cm style=margin-top:8px"></div></div><button class=m style=background:#444;margin-top:10px onclick="LOGOUT()">Logout</button></div>
 
 <script>
-var S=[{n:"Austipher Banda",r:"IPTE21-001",p:"1234",g:"B+ Credit"},{n:"Mary Banda",r:"IPTE21-002",p:"1234",g:"A Pass"},{n:"John Phiri",r:"IPTE21-003",p:"1234",g:"B"}];
+function make480(){var l=[];for(var i=1;i<=480;i++){var n=i.toString().padStart(3,'0');var r="IPTE21-"+n;var name="Student "+i;if(i==1)name="Austipher Banda";if(i==2)name="Mary Banda";if(i==5)name="Grace Mussa";var g=["B+ Credit","A Pass","B","A Credit","B+"][i%5];l.push({n:name,r:r,p:"1234",g:g});}return l;}
+var S=JSON.parse(localStorage.getItem('mhg_mtt')||'[]');if(S.length<480){S=make480();localStorage.setItem('mhg_mtt',JSON.stringify(S));}
 var cur=null;
-function LOGIN(){
- var u=document.getElementById('u').value.trim();
- var p=document.getElementById('p').value.trim();
- var out=document.getElementById('out');
- if(!u||!p){out.innerHTML="<span style=color:red>Enter username and password</span>";return;}
- // ADMIN CHECK - ONE PLACE
- if(u.toLowerCase()=="admin" && p=="1234"){
-  document.getElementById('login').style.display="none";
-  document.getElementById('adminPanel').style.display="block";
-  document.getElementById('studentPanel').style.display="none";
-  R(); out.innerHTML=""; return;
- }
- // STUDENT CHECK - SAME PLACE
- var f=S.find(a=>a.r.toUpperCase()==u.toUpperCase() && a.p==p);
- if(f){
-  cur=f;
-  document.getElementById('login').style.display="none";
-  document.getElementById('adminPanel').style.display="none";
-  document.getElementById('studentPanel').style.display="block";
-  document.getElementById('sInfo').innerHTML="<div style=background:#e8f5e9;padding:12px;border-radius:8px;border-left:4px solid green><b>Welcome "+f.n+"</b><br>Reg: "+f.r+"<br>Grade: <b style=color:green>"+f.g+"</b><br>IPTE21 Cohort</div>";
-  out.innerHTML=""; return;
- }
- var ex=S.find(a=>a.r.toUpperCase()==u.toUpperCase());
- if(ex){out.innerHTML="<span style=color:red>Wrong password for "+u+"</span>";}
- else{out.innerHTML="<span style=color:red>Not found. Try admin/1234 or IPTE21-001/1234</span>";}
-}
-function LOGOUT(){
- document.getElementById('login').style.display="block";
- document.getElementById('adminPanel').style.display="none";
- document.getElementById('studentPanel').style.display="none";
- document.getElementById('u').value="";document.getElementById('p').value="";document.getElementById('out').innerHTML="";
-}
-function CHANGE(){
- if(!cur)return;
- var a=document.getElementById('n1').value.trim();
- var b=document.getElementById('n2').value.trim();
- var m=document.getElementById('cm');
- if(a!=b){m.innerHTML="<span style=color:red>Not matching</span>";return;}
- if(a.length<4){m.innerHTML="<span style=color:red>Too short (min 4)</span>";return;}
- S=S.map(x=>{if(x.r==cur.r){x.p=a;cur.p=a;}return x;});
- m.innerHTML="<span style=color:green>✅ Password changed! New: "+a+" - Logout and login with new password</span>";
- document.getElementById('n1').value="";document.getElementById('n2').value="";
-}
-function CREATE(){
- var n=document.getElementById('nn').value.trim();
- var r=document.getElementById('rr').value.trim().toUpperCase();
- var p=document.getElementById('ppw').value.trim();
- var g=document.getElementById('gg').value.trim();
- if(!n||!r||!p||!g){document.getElementById('msg').innerHTML="Fill all";return;}
- S=S.filter(a=>a.r!=r); S.push({n:n,r:r,p:p,g:g});
- document.getElementById('msg').innerHTML="<span style=color:green>✅ Created "+r+" Pass: "+p+"</span>"; R();
-}
-function DEL(r){if(!confirm("Delete "+r+"?"))return; S=S.filter(a=>a.r!=r); R();}
-function R(){var t=document.getElementById('t');t.innerHTML="<tr><th>Reg</th><th>Name</th><th>Pass</th><th>Grade</th><th>X</th></tr>";S.forEach(a=>{var tr=document.createElement('tr');tr.innerHTML="<td>"+a.r+"</td><td>"+a.n+"</td><td>"+a.p+"</td><td>"+a.g+"</td><td><button onclick=DEL('"+a.r+"') style=padding:3px;background:#c00;color:#fff;border:0;border-radius:3px>X</button></td>";t.appendChild(tr);});}
+function LOGIN(){var u=document.getElementById('u').value.trim().toUpperCase();var p=document.getElementById('p').value.trim();var o=document.getElementById('out');if(!u||!p){o.innerHTML='<span style=color:red>Enter both</span>';return;}if(u=='ADMIN'&&p=='1234'){document.getElementById('login').style.display='none';document.getElementById('adminPanel').style.display='block';R();o.innerHTML='';return;}var f=S.find(a=>a.r==u&&a.p==p);if(f){cur=f;document.getElementById('login').style.display='none';document.getElementById('studentPanel').style.display='block';document.getElementById('sInfo').innerHTML='<div style=background:#e8f5e9;padding:12px;border-radius:8px;border-left:4px solid green><b>Welcome '+f.n+'</b><br>Reg: '+f.r+'<br>Grade: <b style=color:green>'+f.g+'</b><br>Current pass: '+f.p+'</div>';o.innerHTML='';return;}var e=S.find(a=>a.r==u);if(e){o.innerHTML='<span style=color:red>Wrong password for '+u+'. Try '+e.p+'</span>';}else{o.innerHTML='<span style=color:red>'+u+' not found. Try IPTE21-001 to 480</span>';}}
+function LOGOUT(){document.getElementById('login').style.display='block';document.getElementById('adminPanel').style.display='none';document.getElementById('studentPanel').style.display='none';document.getElementById('u').value='';document.getElementById('p').value='';document.getElementById('out').innerHTML='';cur=null;document.getElementById('login').scrollIntoView({behavior:'smooth'});}
+function CHANGE(){if(!cur)return;var a=document.getElementById('n1').value.trim();var b=document.getElementById('n2').value.trim();var m=document.getElementById('cm');if(!a||!b){m.innerHTML='<span style=color:red>Fill both</span>';return;}if(a!=b){m.innerHTML='<span style=color:red>Not matching</span>';return;}if(a.length<4){m.innerHTML='<span style=color:red>Too short</span>';return;}S=S.map(x=>{if(x.r==cur.r){x.p=a;cur.p=a;}return x;});localStorage.setItem('mhg_mtt',JSON.stringify(S));m.innerHTML='<span style=color:green>✅ Changed to: <b>'+a+'</b><br>Logout & login with new</span>';R();}
+function CREATE(){var n=document.getElementById('nName').value.trim();var r=document.getElementById('nReg').value.trim().toUpperCase();var p=document.getElementById('nPass').value.trim();var g=document.getElementById('nGrade').value.trim();var msg=document.getElementById('msg');if(!n||!r||!p||!g){msg.innerHTML='Fill all';return;}S=S.filter(a=>a.r!=r);S.push({n:n,r:r,p:p,g:g});localStorage.setItem('mhg_mtt',JSON.stringify(S));msg.innerHTML='✅ Created '+r;R();}
+function DEL(r){if(!confirm('Delete '+r+'?'))return;S=S.filter(a=>a.r!=r);localStorage.setItem('mhg_mtt',JSON.stringify(S));R();}
+function R(){var t=document.getElementById('t');t.innerHTML='<tr><th>Reg</th><th>Name</th><th>Pass</th><th>Grade</th><th>X</th></tr>';S.forEach(a=>{var tr=document.createElement('tr');tr.innerHTML='<td>'+a.r+'</td><td>'+a.n+'</td><td>'+a.p+'</td><td>'+a.g+'</td><td><button onclick="DEL(\''+a.r+'\')" style=padding:3px;background:#c00;color:#fff;border:0;border-radius:3px>X</button></td>';t.appendChild(tr);});}
 R();
 </script></body></html>
