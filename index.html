@@ -1,136 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>MHG TTC MACHINGA</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f5f7fb}
-header{background:#0a1931;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-header b{color:#f4b400}
-.y{background:#f4b400;color:#000;border:0;padding:9px 20px;border-radius:20px;font-weight:700;cursor:pointer}
-.hero{background:#0a1931;color:#fff;padding:18px 16px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.hero h1{font-size:24px;line-height:1.2}
-.hero h1 span{color:#f4b400}
-.hero p{color:#a0aec0;font-size:13px;margin-top:8px}
-.hero img{width:140px;height:85px;object-fit:cover;border-radius:10px;border:2px solid #f4b400;background:#fff}
-.stats{display:flex;gap:8px;padding:12px;background:#fff;overflow:auto}
-.stat{min-width:85px;background:#fff;border-radius:12px;padding:10px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.card{background:#fff;margin:10px;padding:14px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-input,button{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:1px solid #ccc;font-size:14px}
-button.m{background:#0a1931;color:#fff;border:0;font-weight:700;cursor:pointer}
-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
-th,td{border:1px solid #ddd;padding:6px}
-th{background:#0a1931;color:#fff}
-</style>
-</head>
-<body>
-<header><b>MHG TTC MACHINGA</b><button class=y onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">Login</button></header>
-<div class=hero>
-<div style=flex:1;min-width:180px>
-<h1>Welcome to<br><span>MHG TTC Machinga College</span></h1>
-<p>Real MHG Campus - IPTE21 480 Students</p>
-<button class=y style=margin-top:10px onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">Login to Portal</button>
-</div>
-<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400" alt="MHG Campus">
-</div>
-<div class=stats>
-<div class=stat><b>99%</b><br><small>Pass Rate</small></div>
-<div class=stat><b>480</b><br><small>Bed</small></div>
-<div class=stat><b>2010</b><br><small>Opened</small></div>
-<div class=stat><b>IPTE21</b><br><small>Cohort</small></div>
-</div>
-<div class=card id=login style=border:2px solid #0a1931>
-<h3 style=text-align:center>🔐 ONE Portal Login</h3>
-<input id=u placeholder="Enter Username or Reg Number">
-<input id=p type=password placeholder="Enter Password">
-<button class=m onclick="LOGIN()">Login Now</button>
-<div id=out style=margin-top:12px;font-size:13px"></div>
-</div>
+<!DOCTYPE html><html><head><meta <charset>
+  <!--Tab to edit-->
+</charset>="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MHG TTC MACHINGA</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f5f7fb}header{background:#0a1931;color:#fff;padding:14px;display:flex;justify-content:space-between}header b{color:#f4b400}.y{background:#f4b400;color:#000;border:0;padding:9px 18px;border-radius:20px;font-weight:700}.card{background:#fff;margin:10px;padding:14px;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,.1)}input,button{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:1px solid #ccc}button.m{background:#0a1931;color:#fff;border:0;font-weight:700}table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}th,td{border:1px solid #ddd;padding:5px}th{background:#0a1931;color:#fff}.dept{background:#0a1931;color:#fff;padding:12px;border-radius:8px;margin-top:8px;border-left:4px solid #f4b400}.dept b{color:#f4b400}.dtab{display:inline-block;padding:8px 12px;background:#ddd;border-radius:20px;margin:4px;font-size:12px;cursor:pointer}.dtab.active{background:#0a1931;color:#fff}.subjInput{display:flex;gap:6px;align-items:center;margin-top:6px}.subjInput label{width:55%;font-size:11px}.subjInput input{width:45%}</style></head><body>
+<header><b>MHG TTC MACHINGA</b><button class=y onclick="goLogin()">Login</button></header>
+<div class=card style=background:#0a1931;color:#fff><h3>Welcome to <span style=color:#f4b400>MHG TTC Machinga</span></h3><p style=color:#a0aec0;font-size:13px;margin-top:6px>IPTE21 - 480 Students</p></div>
+<div class=card id=login style=border:2px solid #0a1931><h3 style=text-align:center>ONE Portal Login</h3><input id=u placeholder="ADMIN or IPTE21-001"><input id=p type=password placeholder="1234"><button class=m onclick="LOGIN()">Login Now</button><div id=out style=margin-top:8px;color:red;font-size:13px></div><div style=font-size:11px;color:#666;margin-top:6px>ADMIN / 1234 = Admin<br>IPTE21-001 / 1234 = Student</div></div>
+
 <div class=card id=adminPanel style=display:none;border:2px solid #0a1931>
-<h3>Admin Panel</h3>
-<input id=nName placeholder="Full Name">
-<input id=nReg placeholder="Reg No: IPTE21-481">
-<input id=nPass type=password placeholder="Set Student Password">
-<input id=nGrade placeholder="Grade: A Distinction">
-<button class=m onclick="CREATE()">Create / Update Student</button>
-<button class=m style=background:#444;margin-top:6px onclick="LOGOUT()">Logout</button>
-<div id=msg style=margin-top:8px;font-size:13px"></div>
-<div style=max-height:250px;overflow:auto><table id=t><tr><th>Reg</th><th>Name</th><th>Grade</th><th>X</th></tr></table></div>
+<h3>Admin Room - Departments + Own Results</h3>
+<div style=margin-top:8px><b>Departments (Admin Only) - Click to filter:</b><br>
+<div class="dtab active" id=tabAll onclick="filterDept('All')">All</div>
+<div class="dtab" id=tabMath onclick="filterDept('Mathematics and Science')">Maths & Science</div>
+<div class="dtab" id=tabLang onclick="filterDept('Languages')">Languages</div>
+<div class="dtab" id=tabFound onclick="filterDept('Foundation')">Foundation</div>
+<div class="dtab" id=tabHum onclick="filterDept('Humanities')">Humanities</div>
 </div>
-<div class=card id=studentPanel style=display:none;border:2px solid green>
-<h3>Student Panel</h3>
-<div id=sInfo></div>
-<div id=detailedResults style="margin-top:12px"></div>
-<div style=margin-top:12px;border-top:1px solid #ddd;padding-top:12px>
-<b>🔑 Change My Password</b>
-<input id=n1 type=password placeholder="Enter New Password">
-<input id=n2 type=password placeholder="Confirm New Password">
-<button class=m style=background:#f4b400;color:#000 onclick="CHANGE()">Update My Password</button>
-<div id=cm style=margin-top:8px;font-size:13px"></div>
+<div id=deptInfo style=margin-top:10px>
+<div class=dept><b>1. Department of Mathematics and Science</b><br><small>Mathematics, Science & Technology, Agriculture - Own Results: <span id=avgMath>--</span></small></div>
+<div class=dept><b>2. Department of Languages</b><br><small>English & Literacy, Chichewa - Own Results: <span id=avgLang>--</span></small></div>
+<div class=dept><b>3. Department of Foundation</b><br><small>Education Foundation, Psychology - Own Results: <span id=avgFound>--</span></small></div>
+<div class=dept><b>4. Department of Humanities</b><br><small>Social Studies, Expressive Arts, Teaching Practice - Own Results: <span id=avgHum>--</span></small></div>
 </div>
-<button class=m style=background:#444;margin-top:10px onclick="LOGOUT()">Logout</button>
+
+<!-- ADDED ONLY - RESULT TABLE WHERE ADMIN CAN ENTER EACH SUBJECT -->
+<div style=margin-top:12px;border:2px solid #f4b400;padding:10px;border-radius:10px;background:#fffbe6>
+<b>📝 ADDED: Result Table - Enter Results of Each Subject (Admin Only)</b><br>
+<small style=color:#666>Admin can type marks 0-100 for each subject here:</small>
+<div id=subjectEntry style=margin-top:8px></div>
+<small style=color:#666>Leave empty = auto generate from Grade. If you type, your typed marks will be used.</small>
 </div>
+
+<div style=margin-top:10px><input id=nName placeholder="Full Name"><input id=nReg placeholder="IPTE21-481"><input id=nPass placeholder="Password"><input id=nGrade placeholder="A Distinction / B Credit / C Credit / D Pass"><button class=m onclick="CREATE()">Create Student with Entered Results</button></div>
+<button class=m style=background:orange;color:#000;margin-top:6px onclick="RESET()">RESET OLD DATA</button><button class=m style=background:#444;margin-top:6px onclick="LOGOUT()">Logout</button>
+<div id=msg style=margin-top:8px"></div><div id=adminView style=margin-top:10px></div><div style=max-height:350px;overflow:auto><table id=t></table></div>
+</div>
+
+<div class=card id=studentPanel style=display:none;border:2px solid green><h3>Student Panel - Results by Department</h3><div id=sInfo></div><div id=detailedResults style=margin-top:10px></div><button class=m style=background:#444;margin-top:10px onclick="LOGOUT()">Logout</button></div>
+
 <script>
-function make480(){var l=[];for(var i=1;i<=480;i++){var n=i.toString().padStart(3,'0');var r="IPTE21-"+n;var name="Student "+i;if(i==1)name="Austipher Banda";if(i==2)name="Mary Banda";if(i==5)name="Grace Mussa";var g=["A Distinction","B Credit","C Credit","D Pass","A Distinction"][i%5];l.push({n:name,r:r,p:"1234",g:g});}return l;}
-var S=JSON.parse(localStorage.getItem('mhg_mtt')||'[]');if(S.length<480){S=make480();localStorage.setItem('mhg_mtt',JSON.stringify(S));}
-var cur=null;
-function getGrade(mark){
-if(mark>=80) return "A Distinction";
-if(mark>=70) return "B Credit";
-if(mark>=50) return "C Credit";
-if(mark>=40) return "D Pass";
-return "F Fail";
-}
-function LOGIN(){
-var u=document.getElementById('u').value.trim().toUpperCase();
-var p=document.getElementById('p').value.trim();
-var o=document.getElementById('out');
-if(!u||!p){o.innerHTML='<span style=color:red>Please enter username and password</span>';return;}
-if(u=='ADMIN'&&p=='1234'){document.getElementById('login').style.display='none';document.getElementById('adminPanel').style.display='block';R();o.innerHTML='';return;}
-var f=S.find(a=>a.r==u&&a.p==p);
-if(f){
-cur=f;
-document.getElementById('login').style.display='none';
-document.getElementById('studentPanel').style.display='block';
-document.getElementById('sInfo').innerHTML='<div style=background:#e8f5e9;padding:12px;border-radius:8px;border-left:4px solid green><b>Welcome '+f.n+'</b><br>Reg: '+f.r+'<br>Grade: <b style=color:green>'+f.g+'</b></div>';
-var subs=[["Education Foundation",0],["English & Literacy",0],["Mathematics",0],["Science & Technology",0],["Social Studies",0],["Expressive Arts",0],["Agriculture & Life Skills",0],["Teaching Practice",0]];
-var range=[50,69];
-if(f.g.includes('A')) range=[80,100];
-else if(f.g.includes('B Credit') || f.g==( 'B')) range=[70,79];
-else if(f.g.includes('C Credit')) range=[50,69];
-else if(f.g.includes('D Pass')) range=[40,49];
-else if(f.g.includes('F')) range=[0,39];
-subs=subs.map(s=>{
-var m=range[0]+Math.floor(Math.random()*(range[1]-range[0]+1));
-return [s[0],m];
-});
-var total=0;
-var html='<div style=background:#fff;border:2px solid #0a1931;border-radius:10px;padding:10px><b style=color:#0a1931>📊 Detailed Results - IPTE21 Final</b><table><tr><th>Subject</th><th>Mark</th><th>Grade</th><th>Remark</th></tr>';
-subs.forEach(s=>{
-var mark=s[1];
-var gradeLabel=getGrade(mark);
-total+=mark;
-var remark=mark>=40?"Pass":"Fail";
-var color=mark>=40?"green":"red";
-html+='<tr><td>'+s[0]+'</td><td><b>'+mark+'%</b></td><td>'+gradeLabel.split(' ')[0]+'</td><td style=color:'+color+'><b>'+remark+'</b></td></tr>';
-});
-var avg=Math.round(total/subs.length);
-var finalGrade=getGrade(avg);
-html+='</table><div style=margin-top:8px;padding:10px;background:#e8f5e9;border-radius:6px;text-align:center><b>Average Rate: '+avg+'%</b><br><small>Final Grade: <b style=color:green>'+finalGrade+'</b> | Status: <b style=color:green>'+(avg>=40?'PASS':'FAIL')+'</b></small><br><small style=color:#666>80-100=A Distinction | 70-79=B Credit | 50-69=C Credit | 40-49=D Pass | 0-39=F Fail</small></div></div>';
-document.getElementById('detailedResults').innerHTML=html;
-o.innerHTML='';
-return;
-}
-o.innerHTML='<span style=color:red>Invalid username or password</span>';
-}
-function LOGOUT(){document.getElementById('login').style.display='block';document.getElementById('adminPanel').style.display='none';document.getElementById('studentPanel').style.display='none';document.getElementById('u').value='';document.getElementById('p').value='';document.getElementById('out').innerHTML='';cur=null;document.getElementById('login').scrollIntoView({behavior:'smooth'});}
-function CHANGE(){if(!cur)return;var a=document.getElementById('n1').value.trim();var b=document.getElementById('n2').value.trim();var m=document.getElementById('cm');if(!a||!b){m.innerHTML='<span style=color:red>Fill both fields</span>';return;}if(a!=b){m.innerHTML='<span style=color:red>Passwords do not match</span>';return;}if(a.length<4){m.innerHTML='<span style=color:red>Min 4 chars</span>';return;}S=S.map(x=>{if(x.r==cur.r){x.p=a;cur.p=a;}return x;});localStorage.setItem('mhg_mtt',JSON.stringify(S));m.innerHTML='<span style=color:green>✅ Password updated!</span>';document.getElementById('n1').value='';document.getElementById('n2').value='';R();}
-function CREATE(){var n=document.getElementById('nName').value.trim();var r=document.getElementById('nReg').value.trim().toUpperCase();var p=document.getElementById('nPass').value.trim();var g=document.getElementById('nGrade').value.trim();var msg=document.getElementById('msg');if(!n||!r||!p||!g){msg.innerHTML='<span style=color:red>Fill all fields</span>';return;}S=S.filter(a=>a.r!=r);S.push({n:n,r:r,p:p,g:g});localStorage.setItem('mhg_mtt',JSON.stringify(S));msg.innerHTML='<span style=color:green>✅ '+r+' created</span>';R();}
-function DEL(r){if(!confirm('Delete '+r+'?'))return;S=S.filter(a=>a.r!=r);localStorage.setItem('mhg_mtt',JSON.stringify(S));R();}
-function R(){var t=document.getElementById('t');t.innerHTML='<tr><th>Reg</th><th>Name</th><th>Grade</th><th>X</th></tr>';S.forEach(a=>{var tr=document.createElement('tr');tr.innerHTML='<td>'+a.r+'</td><td>'+a.n+'</td><td>'+a.g+'</td><td><button onclick="DEL(\''+a.r+'\')" style=padding:3px;background:#c00;color:#fff;border:0;border-radius:3px>X</button></td>';t.appendChild(tr);});}
-R();
-</script>
-</body>
-</html>
+var SUBJECTS=[{n:"Education Foundation",d:"Foundation"},{n:"English and Literacy",d:"Languages"},{n:"Mathematics",d:"Mathematics and Science"},{n:"Science and Technology",d:"Mathematics and Science"},{n:"Social Studies",d:"Humanities"},{n:"Expressive Arts",d:"Humanities"},{n:"Agriculture and Life Skills",d:"Mathematics and Science"},{n:"Teaching Practice",d:"Humanities"}];
+function getG(m){if(m>=80)return"A Distinction";if(m>=70)return"B Credit";if(m>=50)return"C Credit";if(m>=40)return"D Pass";return"F Fail";}
+function makeSubs(g){var lo=50,hi=69;if(g.indexOf("A")>=0){lo=80;hi=100;}else if(g.indexOf("B")>=0){lo=70;hi=79;}else if(g.indexOf("C")>=0){lo=50;hi=69;}else if(g.indexOf("D")>=0){lo=40;hi=49;}else if(g.indexOf("F")>=0){lo=0;hi=39;}var a=[];for(var i=0;i<SUBJECTS.length;i++){var m=lo+Math.floor(Math.random()*(hi-lo+1));a.push([SUBJECTS[i].n,m,SUBJECTS[i].d]);}return a;}
+function make480(){var L=[];for(var i=1;i<=480;i++){var num=("00"+i).slice(-3);var r="IPTE21-"+num;var n="Student "+i;if(i==1)n="Austipher Banda";var g=["A Distinction","B Credit","C Credit","D Pass","A Distinction"][i%5];L.push({n:n,r:r,p:"1234",g:g,subs:makeSubs(g)});}return L;}
+var S=[];try{var raw=localStorage.getItem("mhg_final_working");S=raw?JSON.parse(raw):[];}catch(e){S=[];}
+if(S.length<50||!S[0].subs){S=make480();localStorage.setItem("mhg_final_working",JSON.stringify(S));}
+var curDept="All";
+function safeAvg(a){if(!a||!a.length)return 0;var t=0;for(var i=0;i<a.length;i++)t+=a[i][1]||0;return Math.round(t/a.length);}
+function deptAvg(allSubs,dept){var f=[];for(var i=0;i<allSubs.length;i++)if(allSubs[i][2]==dept)f.push(allSubs[i]);return safeAvg(f);}
+function calcAllDeptAvg(){var all=[];for(var i=0;i<S.length;i++)all=all.concat(S[i].subs);document.getElementById("avgMath").innerText=deptAvg(all,"Mathematics and Science")+"%";document.getElementById("avgLang").innerText=deptAvg(all,"Languages")+"%";document.getElementById("avgFound").innerText=deptAvg(all,"Foundation")+"%";document.getElementById("avgHum").innerText=deptAvg(all,"Humanities")+"%";}
+function goLogin(){document.getElementById("login").scrollIntoView({behavior:"smooth"});}
+function filterDept(d){curDept=d;document.querySelectorAll(".dtab").forEach(function(e){e.classList.remove("active")});if(d=="All")document.getElementById("tabAll").classList.add("active");if(d=="Mathematics and Science")document.getElementById("tabMath").classList.add("active");if(d=="Languages")document.getElementById("tabLang").classList.add("active");if(d=="Foundation")document.getElementById("tabFound").classList.add("active");if(d=="Humanities")document.getElementById("tabHum").classList.add("active");R();}
+
+// BUILD RESULT ENTRY TABLE - ADDED ONLY
+function buildSubjectEntry(){var c=document.getElementById("subjectEntry");var h="";for(var i=0;i<SUBJECTS.length;i++){h+="<div class=subjInput><label>"+(i+1)+". "+SUBJECTS[i].n+" ("+SUBJECTS[i].d+")</label><input id=sub_"+i+" type=number min=0 max=100 placeholder='0-100'></div>";}c.innerHTML=h;}
+buildSubjectEntry();
+
+function getManualSubs(grade){var hasManual=false;var manual=[];for(var i=0;i<SUBJECTS.length;i++){var el=document.getElementById("sub_"+i);var v=el?el.value.trim():"";if(v!==""){hasManual=true;var num=parseInt(v);if(isNaN(num)||num<0)num=0;if(num>100)num=100;manual.push([SUBJECTS[i].n,num,SUBJECTS[i].d]);}else{manual.push(null);}}if(!hasManual)return makeSubs(grade);var final=[];for(var j=0;j<SUBJECTS.length;j++){if(manual[j]!==null){final.push(manual[j]);}else{var lo=50,hi=69;if(grade.indexOf("A")>=0){lo=80;hi=100;}else if(grade.indexOf("B")>=0){lo=70;hi=79;}else if(grade.indexOf("C")>=0){lo=50;hi=69;}else if(grade.indexOf("D")>=0){lo=40;hi=49;}else if(grade.indexOf("F")>=0){lo=0;hi=39;}var m=lo+Math.floor(Math.random()*(hi-lo+1));final.push([SUBJECTS[j].n,m,SUBJECTS[j].d]);}}return final;}
+
+function LOGIN(){var u=document.getElementById("u").value.trim().toUpperCase();var p=document.getElementById("p").value.trim();var o=document.getElementById("out");if(!u||!p){o.innerText="Enter login";return;}if(u=="ADMIN"&&p=="1234"){document.getElementById("login").style.display="none";document.getElementById("adminPanel").style.display="block";calcAllDeptAvg();R();return;}var f=null;for(var i=0;i<S.length;i++)if(S[i].r==u&&S[i].p==p){f=S[i];break;}if(f){document.getElementById("login").style.display="none";document.getElementById("studentPanel").style.display="block";document.getElementById("sInfo").innerHTML="<b>"+f.n+"</b><br>"+f.r+"<br>Grade: "+f.g;var html="";var depts=["Mathematics and Science","Languages","Foundation","Humanities"];for(var d=0;d<depts.length;d++){var deptName=depts[d];var subList=[];for(var k=0;k<f.subs.length;k++)if(f.subs[k][2]==deptName)subList.push(f.subs[k]);var dAvg=safeAvg(subList);html+="<div style=border:2px solid #0a1931;border-radius:8px;padding:8px;margin-top:8px><b>"+deptName+" - Own Results: "+dAvg+"% - "+getG(dAvg)+"</b><table><tr><th>Subject</th><th>Mark</th><th>Grade</th></tr>";for(var s=0;s<subList.length;s++){html+="<tr><td>"+subList[s][0]+"</td><td><b>"+subList[s][1]+"%</b></td><td>"+getG(subList[s][1])+"</td></tr>";}html+="</table></div>";}var avg=safeAvg(f.subs);html="<div style=background:#e8f5e9;padding:8px;text-align:center><b>Overall Average: "+avg+"% - "+getG(avg)+"</b><br><small>80-100=A | 70-79=B | 50-69=C | 40-49=D | 0-39=F</small></div>"+html;document.getElementById("detailedResults").innerHTML=html;return;}o.innerText="Invalid login";}
+function LOGOUT(){document.getElementById("login").style.display="block";document.getElementById("adminPanel").style.display="none";document.getElementById("studentPanel").style.display="none";}
+function RESET(){localStorage.clear();S=make480();localStorage.setItem("mhg_final_working",JSON.stringify(S));alert("Cleared - fixed");location.reload();}
+function CREATE(){var n=document.getElementById("nName").value.trim();var r=document.getElementById("nReg").value.trim().toUpperCase();var p=document.getElementById("nPass").value.trim();var g=document.getElementById("nGrade").value.trim();if(!n||!r||!p||!g){document.getElementById("msg").innerText="Fill all name/reg/pass/grade";return;}var s=getManualSubs(g);var NL=[];for(var i=0;i<S.length;i++)if(S[i].r!=r)NL.push(S[i]);NL.push({n:n,r:r,p:p,g:g,subs:s});S=NL;localStorage.setItem("mhg_final_working",JSON.stringify(S));document.getElementById("msg").innerText="Created "+r+" with marks: "+safeAvg(s)+"%";calcAllDeptAvg();R();for(var i=0;i<SUBJECTS.length;i++){var el=document.getElementById("sub_"+i);if(el)el.value="";}}
+function DEL(r){var NL=[];for(var i=0;i<S.length;i++)if(S[i].r!=r)NL.push(S[i]);S=NL;localStorage.setItem("mhg_final_working",JSON.stringify(S));calcAllDeptAvg();R();closeView();}
+function VIEW(r){var f=null;for(var i=0;i<S.length;i++)if(S[i].r==r){f=S[i];break;}if(!f)return;var html="<div style=border:2px solid #f4b400;padding:8px;border-radius:8px><b>"+f.n+" "+f.r+"</b>";var depts=["Mathematics and Science","Languages","Foundation","Humanities"];for(var d=0;d<depts.length;d++){var deptName=depts[d];var subList=[];for(var k=0;k<f.subs.length;k++)if(f.subs[k][2]==deptName)subList.push(f.subs[k]);var dAvg=safeAvg(subList);html+="<div style=margin-top:8px><b>"+deptName+" : "+dAvg+"% - "+getG(dAvg)+"</b><table><tr><th>Subject</th><th>Mark</th><th>Grade</th></tr>";for(var s=0;s<subList.length;s++)html+="<tr><td>"+subList[s][0]+"</td><td>"+subList[s][1]+"%</td><td>"+getG(subList[s][1])+"</td></tr>";html+="</table></div>";}html+="<div style=text-align:center;background:#e8f5e9;padding:6px;margin-top:6px><b>Overall Avg "+safeAvg(f.subs)+"%</b></div><button class=m style=background:#444;margin-top:6px onclick=closeView()>Close</button></div>";document.getElementById("adminView").innerHTML=html;}
+function closeView(){document.getElementById("adminView").innerHTML="";}
+function R(){var t=document.getElementById("t");t.innerHTML="<tr><th>Reg</th><th>Name</th><th>Grade</th><th>Avg</th><th>View</th><th>X</th></tr>";for(var i=0;i<S.length;i++){var a=S[i];if(curDept!="All"){var has=false;for(var k=0;k<a.subs.length;k++)if(a.subs[k][2]==curDept)has=true;if(!has)continue;}var avg=safeAvg(a.subs);var tr=document.createElement("tr");tr.innerHTML="<td>"+a.r+"</td><td>"+a.n+"</td><td>"+a.g+"</td><td><b>"+avg+"%</b></td><td><button onclick=VIEW('"+a.r+"') style=padding:4px;background:#0a1931;color:#fff;border:0;border-radius:3px>View</button></td><td><button onclick=DEL('"+a.r+"') style=padding:3px;background:#c00;color:#fff;border:0;border-radius:3px>X</button></td>";t.appendChild(tr);}}
+R();calcAllDeptAvg();
+</script></body></html>
